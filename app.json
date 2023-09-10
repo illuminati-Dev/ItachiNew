@@ -1,0 +1,12 @@
+{
+    "name": "makimabots",
+    "repository": "https://github.com/whiteFangx/makimabot",
+    "env": {},
+    "stack": "heroku-20",
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
