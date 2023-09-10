@@ -17,8 +17,8 @@ class Config(object):
     API_ID = 4042547  # integer value, dont use ""
     API_HASH = "26edf5e69b62da2b6c4e3b8336e22f34"
     TOKEN = "1979449216:AAEWAmR-m5PkmMLnUJYy3oaD5dABM0n2WbM"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 1973983574  # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "Wolverineeex"
+    OWNER_ID = 5743243857  # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    OWNER_USERNAME = "Theharxhu"
     SUPPORT_CHAT = 'Makima_Bot_Support'  # Your own group for support, do not add the @
     JOIN_LOGGER = -1001544884219  # Prints any new group the bot is added to, prints just the name and ID.
     EVENT_LOGS = -1001544884219  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
@@ -36,33 +36,22 @@ class Config(object):
 
     # OPTIONAL
     # List of id's -  (not usernames) for users which have sudo access to the bot.
-    DRAGONS = [
-        917790252,
-        1380685014,
-        1172340595,
-        1869271514,
-        1435293433,
-        2107137268,
-        1858995207,
-        1649093710,
-        1719660492,
+    DRAGONS = [     
 
     ]
     # List of id's - (not usernames) for developers who will have the same perms as the owner
     DEV_USERS = [
         1476517140,
-        1711005257,
+        5751548638,
+        5821581983,
 
     ]
     # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
     DEMONS = [
-        5555455171,
 
     ]
     # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
     TIGERS = [
-        1827695840,
-        1694138821,
 
     ]
     WOLVES = [
