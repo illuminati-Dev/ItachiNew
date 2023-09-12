@@ -61,7 +61,7 @@ class Config(object):
     CERT_PATH = None
     PORT = 5000
     REDIS_URL = ''
-    MONGO_DB_URI = ''
+    MONGO_DB_URI = 'mongodb+srv://Itachi:Itachi_123@itachi.wz6e5.mongodb.net/?retryWrites=true&w=majority'
     DEL_CMDS = True  # Delete commands that users dont have access to, like delete /ban if a non admin uses it.
     STRICT_GBAN = True
     STRICT_GMUTE = True
