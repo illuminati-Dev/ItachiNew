@@ -17,12 +17,12 @@ class Config(object):
     API_ID = 4042547  # integer value, dont use ""
     API_HASH = "26edf5e69b62da2b6c4e3b8336e22f34"
     TOKEN = ""  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 5743243857  # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "The_NanamiKento"
+    OWNER_ID = 6265459491  # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    OWNER_USERNAME = "The_NanamiiKento"
     SUPPORT_CHAT = 'UchihaPolice_Support'  # Your own group for support, do not add the @
-    JOIN_LOGGER = -1001544884219  # Prints any new group the bot is added to, prints just the name and ID.
-    EVENT_LOGS = -1001544884219  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
-    ERROR_LOGS = 1476517140  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
+    JOIN_LOGGER = -1001922732593  # Prints any new group the bot is added to, prints just the name and ID.
+    EVENT_LOGS = -1001922732593  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
+    ERROR_LOGS = 6265459491  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
 
     # RECOMMENDED
     DATABASE_URL = 'postgresql://hgjpnjvt:88RutjK5kfbVnN1qK_CFVWoB5kUqpmfz@jelani.db.elephantsql.com/hgjpnjvt'  # needed for any database modules
@@ -41,9 +41,7 @@ class Config(object):
     ]
     # List of id's - (not usernames) for developers who will have the same perms as the owner
     DEV_USERS = [
-        1476517140,
-        5751548638,
-        5821581983,
+        6198858059,     
 
     ]
     # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
