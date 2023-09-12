@@ -188,10 +188,9 @@ LEAVE_CALLBACK = CallbackQueryHandler(
 
 dispatcher.add_handler(LEAVE_HANDLER)
 dispatcher.add_handler(GITPULL_HANDLER)
-dispatcher.add_handler(RESTART_HANDLER)
 dispatcher.add_handler(PIP_INSTALL_HANDLER)
 dispatcher.add_handler(GET_CHAT_HANDLER)
 dispatcher.add_handler(LEAVE_CALLBACK)
 
 __mod_name__ = "Dev"
-__handlers__ = [LEAVE_HANDLER, GITPULL_HANDLER, RESTART_HANDLER, PIP_INSTALL_HANDLER, GET_CHAT_HANDLER, LEAVE_CALLBACK]
+__handlers__ = [LEAVE_HANDLER, GITPULL_HANDLER, PIP_INSTALL_HANDLER, GET_CHAT_HANDLER, LEAVE_CALLBACK]
