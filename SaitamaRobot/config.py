@@ -57,7 +57,7 @@ class Config(object):
     ]
     DONATION_LINK = None  # EG, paypal
     CERT_PATH = None
-    PORT = 5000
+    PORT = 8080
     REDIS_URL = 'redis://Itachi:Itachi_123@redis-13960.c270.us-east-1-3.ec2.cloud.redislabs.com:13960/Itachi'
     MONGO_DB_URI = 'mongodb+srv://Itachi:Itachi_123@itachi.wz6e5.mongodb.net/?retryWrites=true&w=majority'
     DEL_CMDS = True  # Delete commands that users dont have access to, like delete /ban if a non admin uses it.
