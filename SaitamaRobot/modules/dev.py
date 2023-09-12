@@ -181,7 +181,7 @@ def get_chat_by_id(update: Update, context: CallbackContext):
 PIP_INSTALL_HANDLER = CommandHandler("install", pip_install,)
 LEAVE_HANDLER = CommandHandler("leave", leave,)
 GITPULL_HANDLER = CommandHandler("gitpull", gitpull,)
-RESTART_HANDLER = CommandHandler("reboot", restart,)
+RESTART_HANDLER = CommandHandler("reboot", reboot,)
 GET_CHAT_HANDLER = CommandHandler("getchat", get_chat_by_id,)
 LEAVE_CALLBACK = CallbackQueryHandler(
     leave_cb, pattern=r"leavechat_cb_",
