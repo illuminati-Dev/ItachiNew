@@ -27,7 +27,7 @@ class Config(object):
     # RECOMMENDED
     DATABASE_URL = 'postgresql://hgjpnjvt:88RutjK5kfbVnN1qK_CFVWoB5kUqpmfz@jelani.db.elephantsql.com/hgjpnjvt'  # needed for any database modules
     LOAD = []
-    NO_LOAD = ['cleaner', 'connection']
+    NO_LOAD = ['cleaner', 'connection', 'tts']
     WEBHOOK = False
     INFOPIC = True
     URL = None
