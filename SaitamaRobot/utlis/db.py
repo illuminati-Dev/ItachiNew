@@ -32,8 +32,8 @@ def _close_db() -> None:
     _MGCLIENT.close()
 
 # Usage example:
-# collection = get_collection("your_collection_name")
+collection = get_collection("Makima")
 # Perform database operations using the "collection" object
 
 # To close the MongoDB client when done:
-# _close_db()
+_close_db()
