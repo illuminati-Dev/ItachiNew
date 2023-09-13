@@ -78,8 +78,8 @@ class Config(object):
     ARQ_API_URL = "https://arq.hamker.dev"
     BOT_ID = 6603542603
     BOT_USERNAME = "@UchihaItachi_xBot"
-    ANI_DB = "Nano"
-    CHAT_DB = "Nano"
+    ANI_DB = None
+    CHAT_DB = None
     ALLOW_CHATS = True
     DOWN_PATH = "anibot/downloads/"
     KUKI_TOKEN = "ce95970e-8ff5-4ddf-9710-e5fbd54a78f5"
