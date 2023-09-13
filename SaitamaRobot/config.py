@@ -59,7 +59,7 @@ class Config(object):
     CERT_PATH = None
     PORT = 8080
     REDIS_URL = 'redis://default:neko69@redis-18084.c289.us-west-1-2.ec2.cloud.redislabs.com:18084/Neko-Free-db'
-    MONGO_DB_URI = 'mongodb+srv://Itachi:Itachi_123@itachi.wz6e5.mongodb.net/?retryWrites=true&w=majority'
+    MONGO_DB_URI = 'mongodb+srv://vortex:yNNrzMsR0BAiI4iY@cluster0.8sizo.mongodb.net/?retryWrites=true&w=majorityy'
     DEL_CMDS = True  # Delete commands that users dont have access to, like delete /ban if a non admin uses it.
     STRICT_GBAN = True
     STRICT_GMUTE = True
