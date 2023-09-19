@@ -48,7 +48,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-ʜᴇʏ, {}, ᴍʏ ɴᴀᴍᴇ ɪs {}✧! [ㅤ](https://telegra.ph/file/2a6595bec551a85ed0e00.jpg)
+ʜᴇʏ, {}, ᴍʏ ɴᴀᴍᴇ ɪs {}✧! [ㅤ](https://graph.org/file/863d9e30f84f9168f5c28.jpg)
 ɪ ᴀᴍ ᴀ ᴅᴇᴠɪʟ ʜᴜɴᴛᴇʀ ғʀᴏᴍ ᴄʜᴀɪɴsᴀᴡ ᴍᴀɴ.
 ɪ ᴀᴍ  ᴀ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ,ʙᴜɪʟᴛ ғᴏʀ ᴡᴇᴇʙs.
 ɪ ᴀᴍ sᴘᴇᴄɪᴀʟɪᴢᴇᴅ ɪɴ ᴍᴀɴᴀɢɪɴɢ ɢʀᴏᴜᴘs ᴏғ ᴀɴɪᴍᴇ ᴄᴏᴍᴍᴜɴɪᴛɪᴇs❃!
@@ -58,13 +58,13 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ 𝘼𝙙𝙙 𝙈𝙖𝙠𝙞𝙢𝙖 𝙏𝙤 𝙈𝙖𝙣𝙖𝙜𝙚 𝙔𝙤𝙪𝙧 𝙂𝙧𝙤𝙪𝙥 ➕️",
-            url="t.me/Makima_UltraXBot?startgroup=true",
+            text="➕️ 𝘼𝙙𝙙 Itachi 𝙏𝙤 𝙈𝙖𝙣𝙖𝙜𝙚 𝙔𝙤𝙪𝙧 𝙂𝙧𝙤𝙪𝙥 ➕️",
+            url="t.me/Itachi_UchihaXBot?startgroup=true",
         ),
     ],
     [
         InlineKeyboardButton(
-            text="🛠𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝘾𝙝𝙖𝙣𝙣𝙚𝙡", url="https://t.me/Makima_Bot_Updates"
+            text="🛠𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝘾𝙝𝙖𝙣𝙣𝙚𝙡", url="https://t.me/UchihaPoliceUpdate"
         ),
         InlineKeyboardButton(
             text="💬𝙎𝙪𝙥𝙥𝙤𝙧𝙩 𝙂𝙧𝙤𝙪𝙥", url=f"https://t.me/{SUPPORT_CHAT}"
@@ -73,7 +73,7 @@ buttons = [
     [
         InlineKeyboardButton(text="Vc Music🎧", url="https://t.me/Makima_UltraXBot?start=vhelp"),
         InlineKeyboardButton(
-            text="🌐𝙊𝙪𝙧 𝙉𝙚𝙩𝙬𝙤𝙧𝙠", url="https://t.me/TeamWarlords"
+            text="🌐𝙊𝙪𝙧 𝙉𝙚𝙩𝙬𝙤𝙧𝙠", url="https://t.me/TheKaizers"
         ),
     ],
     [
@@ -103,7 +103,7 @@ HELP_STRINGS = """
     "•All commands can either be used with / or !.\n" if ALLOW_EXCL else "",
 )
 
-# SAITAMA_IMG = "https://telegra.ph/file/e853aac9926e3469f1f42.jpg"
+# SAITAMA_IMG = "https://graph.org/file/863d9e30f84f9168f5c28.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 Saitama is hosted on one of Kaizoku's Servers and doesn't require any donations as of now but \
@@ -313,7 +313,7 @@ def makima_about_callback(update, context):
     query = update.callback_query
     if query.data == "makima_":
         query.message.edit_text(
-            text=""" Hi..🤗 I'm *makima*
+            text=""" Hi..🤗 I'm *Itachi*
                  \nHere is the [Source Code](https://github.com/) .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
