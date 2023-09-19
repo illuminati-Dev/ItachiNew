@@ -537,15 +537,15 @@ Commands listed here only work for users with special access and are mainly used
 Group admins/group owners do not need these commands.
 
  ╔ List all special users:
- ╠ /legends : Lists all Legend Devil Hunters
- ╠ /elites : Lists all Elite Devil Hunters
- ╠ /masters : Lists all Master Devil Hunters
- ╠ /pros : Lists all Pro Devil Hunters
- ╠ /founders : Lists all Hunter Association members
- ╠ /addlegend : Adds a user to Legend
- ╠ /addelite : Adds a user to Elite
- ╠ /addmaster : Adds a user to Master
- ╠ /addpro : Adds a user to Pro
+ ╠ /akatsukis : Lists all Legend Devil Hunters
+ ╠ /kages : Lists all Elite Devil Hunters
+ ╠ /hokages : Lists all Master Devil Hunters
+ ╠ /polices : Lists all Pro Devil Hunters
+ ╠ /founders : Lists all Association members
+ ╠ /addakatsuki : Adds a user to Legend
+ ╠ /addkage : Adds a user to Elite
+ ╠ /addhokage : Adds a user to Master
+ ╠ /addpolice : Adds a user to Pro
  ╚ Add founders doesnt exist, devs should know how to add themselves
 
  ╔ Ping:
@@ -587,20 +587,20 @@ Group admins/group owners do not need these commands.
 Visit @{SUPPORT_CHAT} for more information.
 """
 
-SUDO_HANDLER = CommandHandler(("addlegend", "addlegend"), addsudo, run_async=True)
-SUPPORT_HANDLER = CommandHandler(("addelite", "addelite"), addsupport, run_async=True)
-TIGER_HANDLER = CommandHandler(("addmaster"), addtiger, run_async=True)
-WHITELIST_HANDLER = CommandHandler(("addpro", "addpro"), addwhitelist, run_async=True)
-UNSUDO_HANDLER = CommandHandler(("removelegend", "removelegend"), removesudo, run_async=True)
-UNSUPPORT_HANDLER = CommandHandler(("removeelite", "removeelite"), removesupport, run_async=True)
-UNTIGER_HANDLER = CommandHandler(("removemaster"), removetiger, run_async=True)
-UNWHITELIST_HANDLER = CommandHandler(("removepro", "removepro"), removewhitelist, run_async=True)
+SUDO_HANDLER = CommandHandler(("addkage", "addkage"), addsudo, run_async=True)
+SUPPORT_HANDLER = CommandHandler(("addpolice", "addpolice"), addsupport, run_async=True)
+TIGER_HANDLER = CommandHandler(("addhokage"), addtiger, run_async=True)
+WHITELIST_HANDLER = CommandHandler(("addchunin", "addchunin"), addwhitelist, run_async=True)
+UNSUDO_HANDLER = CommandHandler(("removekage", "removekage"), removesudo, run_async=True)
+UNSUPPORT_HANDLER = CommandHandler(("removepolice", "removepolice"), removesupport, run_async=True)
+UNTIGER_HANDLER = CommandHandler(("removehokage"), removetiger, run_async=True)
+UNWHITELIST_HANDLER = CommandHandler(("removechunin", "removechunin"), removewhitelist, run_async=True)
 
-WHITELISTLIST_HANDLER = CommandHandler(["pros", "pros"], whitelistlist, run_async=True)
-TIGERLIST_HANDLER = CommandHandler(["masters"], tigerlist, run_async=True)
-SUPPORTLIST_HANDLER = CommandHandler(["elites", "elites"], supportlist, run_async=True)
-SUDOLIST_HANDLER = CommandHandler(["legends", "legends"], sudolist, run_async=True)
-DEVLIST_HANDLER = CommandHandler(["founders", "founders"], devlist, run_async=True)
+WHITELISTLIST_HANDLER = CommandHandler(["Chunin", "Chunin"], whitelistlist, run_async=True)
+TIGERLIST_HANDLER = CommandHandler(["Hokage"], tigerlist, run_async=True)
+SUPPORTLIST_HANDLER = CommandHandler(["police", "police"], supportlist, run_async=True)
+SUDOLIST_HANDLER = CommandHandler(["Kage", "Kage"], sudolist, run_async=True)
+DEVLIST_HANDLER = CommandHandler(["akatsuki", "akatsuki"], devlist, run_async=True)
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
