@@ -49,7 +49,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 ʜᴇʏ, {}, ᴍʏ ɴᴀᴍᴇ ɪs {}✧! [ㅤ](https://graph.org/file/863d9e30f84f9168f5c28.jpg)
-ɪ ᴀᴍ ᴀ ᴅᴇᴠɪʟ ʜᴜɴᴛᴇʀ ғʀᴏᴍ ᴄʜᴀɪɴsᴀᴡ ᴍᴀɴ.
+I'ᴍ Iᴛᴀᴄʜɪ ғᴏʀᴍ Nᴀʀᴜᴛᴏ ɢᴏᴅ ᴏғ ɢᴇɴJᴜsᴛᴜ
 ɪ ᴀᴍ  ᴀ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ,ʙᴜɪʟᴛ ғᴏʀ ᴡᴇᴇʙs.
 ɪ ᴀᴍ sᴘᴇᴄɪᴀʟɪᴢᴇᴅ ɪɴ ᴍᴀɴᴀɢɪɴɢ ɢʀᴏᴜᴘs ᴏғ ᴀɴɪᴍᴇ ᴄᴏᴍᴍᴜɴɪᴛɪᴇs❃!
 
@@ -58,7 +58,7 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ 𝘼𝙙𝙙 Itachi 𝙏𝙤 𝙈𝙖𝙣𝙖𝙜𝙚 𝙔𝙤𝙪𝙧 𝙂𝙧𝙤𝙪𝙥 ➕️",
+            text="➕️ 𝘼𝙙𝙙 𝙄𝙩𝙖𝙘𝙝𝙞 𝙏𝙤 𝙈𝙖𝙣𝙖𝙜𝙚 𝙔𝙤𝙪𝙧 𝙂𝙧𝙤𝙪𝙥 ➕️",
             url="t.me/Itachi_UchihaXBot?startgroup=true",
         ),
     ],
@@ -71,7 +71,7 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="Vc Music🎧", url="https://t.me/Makima_UltraXBot?start=vhelp"),
+        InlineKeyboardButton(text="Vc Music🎧", url="https://t.me/Itachi_UchihaXBot?start=vhelp"),
         InlineKeyboardButton(
             text="🌐𝙊𝙪𝙧 𝙉𝙚𝙩𝙬𝙤𝙧𝙠", url="https://t.me/TheKaizers"
         ),
@@ -85,7 +85,7 @@ buttons = [
 
 HELP_STRINGS = """
 ʜᴇʏ ᴛʜᴇʀᴇ! ᴍʏ ɴᴀᴍᴇ ɪs *{}*.
-ɪ'ᴍ ᴀ ᴘᴀʀᴛ ᴏғ [ʜᴜɴᴛᴇʀ ᴀssᴏᴄɪᴀᴛɪᴏɴ](https://t.me/Makima_Bot_Support)
+ɪ'ᴍ ᴀ ᴘᴀʀᴛ ᴏғ [TheKaizers](https://t.me/UchihaPolice_Support)
 ʜᴀᴠᴇ ᴀ ʟᴏᴏᴋ ᴀᴛ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ғᴏʀ ᴀɴ ɪᴅᴇᴀ ᴏғ sᴏᴍᴇ ᴏғ ᴛʜᴇ ᴛʜɪɴɢs ɪ ᴄᴀɴ ʜᴇʟᴘ ʏᴏᴜ ᴡɪᴛʜ.
 
 *ᴍᴀɪɴ* ᴄᴏᴍᴍᴀɴᴅs ᴀᴠᴀɪʟᴀʙʟᴇ: 
