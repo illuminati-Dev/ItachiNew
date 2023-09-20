@@ -95,7 +95,6 @@ if ENV:
     TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
     REM_BG_API_KEY = os.environ.get('REM_BG_API_KEY', None)
     GENIUS = os.environ.get('GENIUS', None)
-    WALL_API = os.environ.get('WALL_API', None)
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     REDIS_URL = os.environ.get("REDIS_URL", None)
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
