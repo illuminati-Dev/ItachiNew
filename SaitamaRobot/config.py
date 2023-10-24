@@ -16,13 +16,13 @@ class Config(object):
 
     API_ID = 4042547  # integer value, dont use ""
     API_HASH = "26edf5e69b62da2b6c4e3b8336e22f34"
-    TOKEN = "5520008350:AAFLRar-Mm6ZDXgvCokqRBXpOR_YljnWxsU"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
+    TOKEN = "6295293651:AAES8YM5a9Nz_TaxwecMUozjlm3wOXSbF54"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
     OWNER_ID = 6265459491  # If you dont know, run the bot and do /id in your private chat with it, also an integer
     OWNER_USERNAME = "The_NanamiiKento"
     SUPPORT_CHAT = 'UchihaPolice_Support'  # Your own group for support, do not add the @
-    JOIN_LOGGER = -1001922732593  # Prints any new group the bot is added to, prints just the name and ID.
-    EVENT_LOGS = -1001922732593  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
-    ERROR_LOGS = 6265459491  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
+    JOIN_LOGGER = -1002092880376  # Prints any new group the bot is added to, prints just the name and ID.
+    EVENT_LOGS = -1002092880376  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
+    ERROR_LOGS = 6299128233  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
 
     # RECOMMENDED
     DATABASE_URL = 'postgresql://hgjpnjvt:88RutjK5kfbVnN1qK_CFVWoB5kUqpmfz@jelani.db.elephantsql.com/hgjpnjvt'  # needed for any database modules
@@ -41,7 +41,7 @@ class Config(object):
     ]
     # List of id's - (not usernames) for developers who will have the same perms as the owner
     DEV_USERS = [
-        6198858059,     
+        6299128233,     
 
     ]
     # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
@@ -58,8 +58,8 @@ class Config(object):
     DONATION_LINK = None  # EG, paypal
     CERT_PATH = None
     PORT = 5000
-    REDIS_URL = 'redis://default:neko69@redis-18084.c289.us-west-1-2.ec2.cloud.redislabs.com:18084/Neko-Free-db'
-    MONGO_DB_URI = ''
+    REDIS_URL = 'redis://Itachi:Itachi_123@redis-13960.c270.us-east-1-3.ec2.cloud.redislabs.com:13960/Itachi'
+    MONGO_DB_URI = 'mongodb+srv://Itachi:Itachi_123@itachi.wz6e5.mongodb.net/?retryWrites=true&w=majority'
     DEL_CMDS = True  # Delete commands that users dont have access to, like delete /ban if a non admin uses it.
     STRICT_GBAN = True
     STRICT_GMUTE = True
