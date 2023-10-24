@@ -48,11 +48,13 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-ʜᴇʏ, {}, ᴍʏ ɴᴀᴍᴇ ɪs {}✧! [ㅤ](https://graph.org/file/863d9e30f84f9168f5c28.jpg)
-I'ᴍ Iᴛᴀᴄʜɪ ғᴏʀᴍ Nᴀʀᴜᴛᴏ ɢᴏᴅ ᴏғ ɢᴇɴJᴜsᴛᴜ
-ɪ ᴀᴍ  ᴀ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ,ʙᴜɪʟᴛ ғᴏʀ ᴡᴇᴇʙs.
-ɪ ᴀᴍ sᴘᴇᴄɪᴀʟɪᴢᴇᴅ ɪɴ ᴍᴀɴᴀɢɪɴɢ ɢʀᴏᴜᴘs ᴏғ ᴀɴɪᴍᴇ ᴄᴏᴍᴍᴜɴɪᴛɪᴇs❃!
-
+────「 [Itachi Uchiha](https://graph.org/file/863d9e30f84f9168f5c28.jpg) 」────
+Hola! {},
+My Name Is I{}◎! ㅤ
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+◍ I Am  a Group Management Bot , Built For Weebs.
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+◍ I Am Specialized In Managing Groups Of Anime Communities⚝!
 """
 
 buttons = [
@@ -71,9 +73,9 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="Vc Music🎧", url="https://t.me/Itachi_UchihaXBot?start=vhelp"),
+        InlineKeyboardButton(text="👁️‍🗨️𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙚𝙧", url="https://t.me/Itachi_UchihaXBot?start=vhelp"),
         InlineKeyboardButton(
-            text="🌐𝙊𝙪𝙧 𝙉𝙚𝙩𝙬𝙤𝙧𝙠", url="https://t.me/TheKaizers"
+            text="🌐𝙊𝙪𝙧 𝙉𝙚𝙩𝙬𝙤𝙧𝙠", url="https://t.me/Emperors_Network"
         ),
     ],
     [
