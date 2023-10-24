@@ -50,7 +50,7 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 ────「 [Itachi Uchiha](https://graph.org/file/863d9e30f84f9168f5c28.jpg) 」────
 Hola! {},
-My Name Is I{}◎! ㅤ
+My Name Is {}◎! ㅤ
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 ◍ I Am  a Group Management Bot , Built For Weebs.
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
@@ -598,7 +598,7 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}",
-                                       "[Your necessary evil is just an excuse to justify your own crimes.!](https://telegra.ph/file/8ccd67d2856ea243a45eb.mp4)",
+                                       "[Any technique is worthless before my eyes!](https://telegra.ph/file/989f55a82dc6de16fa01b.mp4)",
                                        parse_mode=ParseMode.MARKDOWN)
         except Unauthorized:
             LOGGER.warning(
@@ -653,7 +653,7 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
-        LOGGER.info("Makima Is Now Alive!")
+        LOGGER.info("Itachi Is Now Alive!")
         updater.start_polling(
             timeout=15,
             read_latency=4,
