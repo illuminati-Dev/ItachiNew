@@ -5,8 +5,12 @@ from motor.core import AgnosticClient, AgnosticDatabase, AgnosticCollection
 # Define the list of symbols to export
 __all__ = ['get_collection', 'close_db']
 
+# Define your MongoDB connection string from a different server or service
+# Replace this with your own connection string
+MONGODB_URI = "mongodb+srv://BlackHatDev:BlackHatDev@blackhatdev.zk92igo.mongodb.net/?retryWrites=true&w=majority"
+
 # Establish a connection to the MongoDB server
-_MGCLIENT: AgnosticClient = AsyncIOMotorClient(ANI_DB)
+_MGCLIENT: AgnosticClient = AsyncIOMotorClient(MONGODB_URI)
 
 # Function to check if the "Makima" database exists and create it if not
 async def check_and_create_database():
