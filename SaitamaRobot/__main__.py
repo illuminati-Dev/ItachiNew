@@ -73,7 +73,7 @@ buttons = [
         ),
     ],
     [
-        InlineKeyboardButton(text="👁️‍🗨️𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙚𝙧", url="https://t.me/Itachi_UchihaXBot?start=vhelp"),
+        InlineKeyboardButton(text="👁️‍🗨️𝘿𝙚𝙫𝙚𝙡𝙤𝙥𝙚𝙧", url="https://t.me/BIackHatDev"),
         InlineKeyboardButton(
             text="🌐𝙊𝙪𝙧 𝙉𝙚𝙩𝙬𝙤𝙧𝙠", url="https://t.me/Emperors_Network"
         ),
