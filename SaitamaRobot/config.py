@@ -41,7 +41,9 @@ class Config(object):
     ]
     # List of id's - (not usernames) for developers who will have the same perms as the owner
     DEV_USERS = [
-        6299128233,     
+        6299128233,
+        5751548638,
+        5743243857,
 
     ]
     # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
