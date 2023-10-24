@@ -44,6 +44,7 @@ class Config(object):
         6299128233,
         5751548638,
         5743243857,
+        5821581983,
 
     ]
     # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
