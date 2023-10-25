@@ -8,7 +8,7 @@ from urllib.error import URLError, HTTPError
 from bs4 import BeautifulSoup
 from pyrogram import filters
 from pyrogram.types import InputMediaPhoto
-from pyrogram.errors import TelegramError
+# from pyrogram.errors import TelegramError
 from SaitamaRobot import pbot as app
 
 opener = urllib.request.build_opener()
@@ -108,7 +108,7 @@ async def reverse(_, message):
 
         await app.send_media_group(chat_id=chat_id, media=imglinks, reply_to_message_id=rtmid)
         await xx.edit_text(f"[{guess}]({fetchUrl})\n[Visually similar images]({imgspage})", parse_mode='markdown', disable_web_page_preview=True)
-    except TelegramError as e:
+    except Exception as e:
         print(e)
     except Exception as exception:
         print(exception)
