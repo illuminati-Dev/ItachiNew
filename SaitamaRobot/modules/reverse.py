@@ -9,7 +9,6 @@ from bs4 import BeautifulSoup
 from pyrogram import filters
 from pyrogram.types import InputMediaPhoto
 from pyrogram.errors import TelegramError
-
 from SaitamaRobot import pbot as app
 
 opener = urllib.request.build_opener()
@@ -121,5 +120,3 @@ Reports bugs at @UchihaPolice_Support
 """
 
 __mod_name__ = "Reverse"
-
-
