@@ -1,30 +1,31 @@
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
 import textwrap
 import os
-from telethon import events
-from telethon.tl.types import DocumentAttributeFilename
-from telethon import functions, types
+from pyrogram import filters
 from SaitamaRobot.events import register
 from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY
+
 # how a lazy guy ports.
-@register(pattern="^/mmf( (.*)|$)")
-async def mmf(event):
-    if event.fwd_from:
+@app.on_message(filters.command("mmf") & filters.reply)
+async def mmf_func(_, message):
+    if not message.reply_to_message:
+        await message.reply("Reply to a sticker/image with meme text.")
         return
-    if not event.reply_to_msg_id:
-        await event.reply("reply to a sticker/image with meme text")
-        return
-    reply_message = await event.get_reply_message()
+
+    reply_message = message.reply_to_message
     if not reply_message.media:
-        await event.reply("```Reply to a image/sticker.```")
+        await message.reply("Reply to an image/sticker.")
         return
-    file = await event.client.download_media(reply_message, TEMP_DOWNLOAD_DIRECTORY)
-    msg = await event.reply("Memifying...")
-    text = str(event.pattern_match.group(1)).strip()
+
+    file = await app.download_media(reply_message)
+    msg = await message.reply("Memifying...")
+
+    text = message.text.split(" ", 1)[1].strip()
     if not text:
-        return await event.reply("You might want to try `/mmf` relpy sticker/image <text>")
+        return await message.reply("You might want to try `/mmf` reply to sticker/image <text>")
+
     meme = await add_text_img(file, text)
-    await event.client.send_file(event.chat_id, file=meme, force_document=False)
+    await app.send_document(message.chat.id, document=meme)
     await msg.delete()
     os.remove(meme)
     os.remove(file)
@@ -87,3 +88,10 @@ async def add_text_img(image_path, text):
     img.save(final_image, **img_info)
     return final_image
 
+__help__ = """
+*Commands:* 
+• /mmf: Add text to a sticker or image and create a meme.
+Reports bugs at @UchihaPolice_Support
+"""
+
+__mod_name__ = "Meme Maker 🃏"
