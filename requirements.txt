@@ -3,7 +3,7 @@ beautifulsoup4
 bleach==5.0.1
 cachetools==4.2.2
 CurrencyConverter
-emoji==1.7.0
+emoji==2.8.0
 feedparser==6.0.10
 future
 geopy
