@@ -41,7 +41,7 @@ motor
 dnspython==2.2.1
 redis
 gtts==2.3.0
-cloudscraper==1.2.67
+cloudscraper==1.2.71
 wget==3.2
 tswift==0.7.0
 lyricsgenius==3.0.1
