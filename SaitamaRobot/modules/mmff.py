@@ -7,7 +7,7 @@ from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY
 from SaitamaRobot import pbot as app
 
 # Load a font that supports getsize
-font = ImageFont.truetype("path_to_your_font.ttf", size=14)
+font = ImageFont.truetype("SaitamaRobot/resources/American Captain.ttf", size=14)
 
 # how a lazy guy ports.
 @app.on_message(filters.command("mmf") & filters.reply)
