@@ -22,7 +22,7 @@ python-telegram-bot==13.14
 regex==2022.7.25
 requests
 speedtest-cli
-spongemock==0.3.4
+spongemock==1.0.0
 sqlalchemy==1.4.46
 telethon==1.24.0
 wikipedia==1.4.0
