@@ -87,7 +87,13 @@ async def quotly_func(_, message: Message):
             await m.delete()
             return
         sticker = sticker[1]
-        await message.reply_sticker(sticker)
+        
+        # Add a check for an empty sticker content before sending
+        if sticker and len(sticker.getvalue()) > 0:
+            await message.reply_sticker(sticker)
+        else:
+            await message.reply_text("The generated sticker is empty.")
+        
         await m.delete()
         sticker.close()
     except Exception as e:
@@ -110,5 +116,3 @@ Here is the help for **Quotly**:
 **Examples**
 **-** `/q red r 2 p`: makes quote in red color, includes reply, and collects 2 messages in between and sends as a photo.
 """
-
-#help.update({"quotly": _help})
