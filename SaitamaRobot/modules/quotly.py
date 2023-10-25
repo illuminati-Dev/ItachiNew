@@ -13,21 +13,22 @@ ARQ_API_KEY = "QQEGEK-ZYQIEP-BWAKDM-UJFKPZ-ARQ"
 ARQ_API_URL = "http://arq.hamker.dev"
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-
 async def quotify(messages: list):
-    response = await arq.quotly(messages)
-    if not response.ok:
-        return [False, response.result]
-    sticker = response.result
-    sticker = BytesIO(sticker)
-    sticker.name = "sticker.webp"
-    return [True, sticker]
-
+    try:
+        response = await arq.quotly(messages)
+        if not response.ok:
+            return [False, response.result]
+        sticker = response.result
+        sticker = BytesIO(sticker)
+        sticker.name = "sticker.webp"
+        return [True, sticker]
+    except Exception as e:
+        print(format_exc())
+        return [False, "An error occurred while creating the quote."]
 
 def getArg(message: Message) -> str:
     arg = message.text.strip().split(None, 1)[1].strip()
     return arg
-
 
 def isArgInt(message: Message) -> bool:
     count = getArg(message)
@@ -37,8 +38,7 @@ def isArgInt(message: Message) -> bool:
     except ValueError:
         return [False, 0]
 
-
-@app.on_message(filters.command("q"))
+@app.on_message(filters.command("q") | filters.command("quote"))
 async def quotly_func(_, message: Message):
     if not message.reply_to_message:
         await message.reply_text("Reply to a message to quote it.")
@@ -47,10 +47,10 @@ async def quotly_func(_, message: Message):
         await message.reply_text("Replied message has no text, can't quote it.")
         return
     m = await message.reply_text("Quoting Messages")
+    
     if len(message.command) < 2:
         messages = [message.reply_to_message]
-
-    elif len(message.command) == 2:
+    else:
         arg = isArgInt(message)
         if arg[0]:
             if arg[1] < 2 or arg[1] > 10:
@@ -79,13 +79,11 @@ async def quotly_func(_, message: Message):
                 replies=1,
             )
             messages = [reply_message]
-    else:
-        await m.edit("Incorrect argument, check quotly module in help section.")
-        return
+    
     try:
         sticker = await quotify(messages)
         if not sticker[0]:
-            await message.rely_text(sticker[1])
+            await message.reply_text(sticker[1])
             await m.delete()
             return
         sticker = sticker[1]
@@ -94,17 +92,12 @@ async def quotly_func(_, message: Message):
         sticker.close()
     except Exception as e:
         await message.reply_text(
-            "Something wrong happened while quoting messages,"
-            + " This error usually happens when there's a "
-            + " message containing something other than text."
+            "Something went wrong while quoting messages. This error usually happens when there's a message containing something other than text."
         )
         await m.delete()
-        e = format_exc()
-        print(e)
-        return
+        print(format_exc())
 
-'''
-_help = """
+__help__ = """
 Here is the help for **Quotly**:
 
 **Command for anyone**
@@ -115,8 +108,7 @@ Here is the help for **Quotly**:
 **->** `/qrand`: show random quotes of the chat 
 
 **Examples**
-**-** `/q red r 2 p`: makes quote in red color, includes reply, and collects 2 messages in between and sends as photo.
+**-** `/q red r 2 p`: makes quote in red color, includes reply, and collects 2 messages in between and sends as a photo.
 """
 
 help.update({"quotly": _help})
-'''
