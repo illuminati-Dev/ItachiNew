@@ -4,6 +4,7 @@ import os
 from pyrogram import filters
 from SaitamaRobot.events import register
 from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY
+from SaitamaRobot import pbot as app
 
 # how a lazy guy ports.
 @app.on_message(filters.command("mmf") & filters.reply)
