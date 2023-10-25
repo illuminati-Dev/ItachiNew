@@ -342,9 +342,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "𝗛𝗲𝗮𝗹𝘁𝗵❤️?", url="https://t.me/Makima_Bot_Updates/5"),
+                                "𝗛𝗲𝗮𝗹𝘁𝗵❤️?", url="https://t.me/UchihaPoliceUpdates/10"),
                             InlineKeyboardButton(
-                                "𝗛𝘂𝗻𝘁𝗲𝗿⚔?", url="https://t.me/Makima_Bot_Updates/4")
+                                "𝗛𝘂𝗻𝘁𝗲𝗿⚔?", url="https://t.me/UchihaPoliceUpdates/4")
                         ],
                     ]
                 ),
@@ -359,9 +359,9 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "𝗛𝗲𝗮𝗹𝘁𝗵❤️?", url="https://t.me/Makima_Bot_Updates/5"),
+                                "𝗛𝗲𝗮𝗹𝘁𝗵❤️?", url="https://t.me/UchihaPoliceUpdates/10"),
                             InlineKeyboardButton(
-                                "𝗛𝘂𝗻𝘁𝗲𝗿⚔?", url="https://t.me/Makima_Bot_Updates/4")
+                                "𝗛𝘂𝗻𝘁𝗲𝗿⚔?", url="https://t.me/UchihaPoliceUpdates/4")
                         ],
                     ]
                 ),
@@ -458,8 +458,8 @@ def stats(update, context):
         update.effective_message.reply_text(
             output + status + "\n*╒═══「 System statistics 」*\n"
             + "\n".join([mod.__stats__() for mod in STATS])
-            + f"\n\n[✦ Support](https://t.me/makima_bot_support) | [✦ Updates](https://t.me/Makima_Bot_Updates)\n\n"
-            + "╘══「 by [Teamwarlords™](https://t.me/TeamWarlords) 」\n",
+            + f"\n\n[✦ Support](https://t.me/UchihaPolice_Support) | [✦ Updates](https://t.me/UchihaPoliceUpdates)\n\n"
+            + "╘══「 by [Teamwarlords™](https://t.me/Emperors_Network) 」\n",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
@@ -471,9 +471,9 @@ def stats(update, context):
                         "\n*Bot statistics*:\n"
                         + "\n".join(mod.__stats__() for mod in STATS)
                     )
-                    + f"\n\n✦ [Support](https://t.me/makima_bot_support) | ✦ [Updates](https://t.me/Makima_Bot_Updates)\n\n"
+                    + f"\n\n✦ [Support](https://t.me/UchihaPolice_Support) | ✦ [Updates](https://t.me/UchihaPoliceUpdates)\n\n"
                 )
-                + "╘══「 by [Teamwarlords™](https://t.me/TeamWarlords) 」\n"
+                + "╘══「 by [Teamwarlords™](https://t.me/Emperors_Network) 」\n"
             ),
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
