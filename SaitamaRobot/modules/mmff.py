@@ -6,6 +6,9 @@ from SaitamaRobot.events import register
 from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY
 from SaitamaRobot import pbot as app
 
+# Load a default font
+default_font = ImageFont.load_default()
+
 # how a lazy guy ports.
 @app.on_message(filters.command("mmf") & filters.reply)
 async def mmf_func(_, message):
@@ -44,10 +47,7 @@ async def add_text_img(image_path, text):
     img = Image.open(image_path).convert("RGBA")
     img_info = img.info
     image_width, image_height = img.size
-    font = ImageFont.truetype(
-        font="SaitamaRobot/resources/MutantAcademyStyle.ttf",
-        size=int(image_height * font_size) // 100,
-    )
+    font = default_font  # Use the default font
     draw = ImageDraw.Draw(img)
 
     char_width, char_height = font.getsize("A")
