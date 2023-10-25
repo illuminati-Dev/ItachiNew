@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont
 import textwrap
 import os
 from pyrogram import filters
@@ -6,8 +6,8 @@ from SaitamaRobot.events import register
 from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY
 from SaitamaRobot import pbot as app
 
-# Load a default font
-default_font = ImageFont.load_default()
+# Load a font that supports getsize
+font = ImageFont.truetype("path_to_your_font.ttf", size=14)
 
 # how a lazy guy ports.
 @app.on_message(filters.command("mmf") & filters.reply)
@@ -35,7 +35,6 @@ async def mmf_func(_, message):
     os.remove(file)
 
 async def add_text_img(image_path, text):
-    font_size = 14
     stroke_width = 2
 
     if ";" in text:
@@ -47,7 +46,6 @@ async def add_text_img(image_path, text):
     img = Image.open(image_path).convert("RGBA")
     img_info = img.info
     image_width, image_height = img.size
-    font = default_font  # Use the default font
     draw = ImageDraw.Draw(img)
 
     char_width, char_height = font.getsize("A")
