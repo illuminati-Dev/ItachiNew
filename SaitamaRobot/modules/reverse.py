@@ -114,8 +114,6 @@ async def reverse(_, message):
     except Exception as exception:
         print(exception)
 
-..
-
 __help__ = """
 *Commands:* 
 • /reverse | pp | grs: Does a reverse image search of the media which it was replied to.
