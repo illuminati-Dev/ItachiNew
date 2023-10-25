@@ -111,4 +111,4 @@ Here is the help for **Quotly**:
 **-** `/q red r 2 p`: makes quote in red color, includes reply, and collects 2 messages in between and sends as a photo.
 """
 
-help.update({"quotly": _help})
+#help.update({"quotly": _help})
