@@ -1,118 +1,80 @@
-from io import BytesIO
-from traceback import format_exc
+import os
+from random import choice
 
-from aiohttp import ClientSession
-from pyrogram import filters
-from pyrogram.types import Message
-from Python_ARQ import ARQ
+from SaitamaRobot import quotly
+from SaitamaRobot.events import register
 
-from SaitamaRobot import pbot as app
 
-aiohttpsession = ClientSession()
-ARQ_API_KEY = "QQEGEK-ZYQIEP-BWAKDM-UJFKPZ-ARQ"
-ARQ_API_URL = "http://arq.hamker.dev"
-arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
-
-async def quotify(messages: list):
-    try:
-        response = await arq.quotly(messages)
-        if not response.ok:
-            return [False, response.result]
-        sticker = response.result
-        sticker = BytesIO(sticker)
-        sticker.name = "sticker.webp"
-        return [True, sticker]
-    except Exception as e:
-        print(format_exc())
-        return [False, "An error occurred while creating the quote."]
-
-def getArg(message: Message) -> str:
-    arg = message.text.strip().split(None, 1)[1].strip()
-    return arg
-
-def isArgInt(message: Message) -> bool:
-    count = getArg(message)
-    try:
-        count = int(count)
-        return [True, count]
-    except ValueError:
-        return [False, 0]
-
-@app.on_message(filters.command("q") | filters.command("quote"))
-async def quotly_func(_, message: Message):
-    if not message.reply_to_message:
-        await message.reply_text("Reply to a message to quote it.")
-        return
-    if not message.reply_to_message.text:
-        await message.reply_text("Replied message has no text, can't quote it.")
-        return
-    m = await message.reply_text("Quoting Messages")
-    
-    if len(message.command) < 2:
-        messages = [message.reply_to_message]
-    else:
-        arg = isArgInt(message)
-        if arg[0]:
-            if arg[1] < 2 or arg[1] > 10:
-                await m.edit("Argument must be between 2-10.")
-                return
-            count = arg[1]
-            messages = await app.get_messages(
-                message.chat.id,
-                list(
-                    range(
-                        message.reply_to_message.message_id,
-                        message.reply_to_message.message_id + count,
+@register(pattern="^/q(?: |$)(.*)")
+async def quott_(event):
+    match = event.pattern_match.group(1).strip()
+    if not event.is_reply:
+        return await event.eor("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ")
+    msg = await event.reply("ᴄʀᴇᴀᴛɪɴɢ Qᴜᴏᴛᴇ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ")
+    reply = await event.get_reply_message()
+    replied_to, reply_ = None, None
+    if match:
+        spli_ = match.split(maxsplit=1)
+        if (spli_[0] in ["r", "reply"]) or (
+            spli_[0].isdigit() and int(spli_[0]) in range(1, 21)
+        ):
+            if spli_[0].isdigit():
+                if not event.client._bot:
+                    reply_ = await event.client.get_messages(
+                        event.chat_id,
+                        min_id=event.reply_to_msg_id - 1,
+                        reverse=True,
+                        limit=int(spli_[0]),
                     )
-                ),
-                replies=0,
-            )
+                else:
+                    id_ = reply.id
+                    reply_ = []
+                    for msg_ in range(id_, id_ + int(spli_[0])):
+                        msh = await event.client.get_messages(event.chat_id, ids=msg_)
+                        if msh:
+                            reply_.append(msh)
+            else:
+                replied_to = await reply.get_reply_message()
+            try:
+                match = spli_[1]
+            except IndexError:
+                match = None
+    user = None
+    if not reply_:
+        reply_ = reply
+    if match:
+        match = match.split(maxsplit=1)
+    if match:
+        if match[0].startswith("@") or match[0].isdigit():
+            try:
+                match_ = await event.client.parse_id(match[0])
+                user = await event.client.get_entity(match_)
+            except ValueError:
+                pass
+            match = match[1] if len(match) == 2 else None
         else:
-            if getArg(message) != "r":
-                await m.edit(
-                    "Incorrect Argument, Pass **'r'** or **'INT'**, **EX:** __/q 2__"
-                )
-                return
-            reply_message = await app.get_messages(
-                message.chat.id,
-                message.reply_to_message.message_id,
-                replies=1,
-            )
-            messages = [reply_message]
-    
+            match = match[0]
+    if match == "random":
+        match = choice(all_col)
     try:
-        sticker = await quotify(messages)
-        if not sticker[0]:
-            await message.reply_text(sticker[1])
-            await m.delete()
-            return
-        sticker = sticker[1]
-        
-        # Add a check for an empty sticker content before sending
-        if sticker and len(sticker.getvalue()) > 0:
-            await message.reply_sticker(sticker)
-        else:
-            await message.reply_text("The generated sticker is empty.")
-        
-        await m.delete()
-        sticker.close()
-    except Exception as e:
-        await message.reply_text(
-            "Something went wrong while quoting messages. This error usually happens when there's a message containing something other than text."
+        file = await quotly.create_quotly(
+            reply_, bg=match, reply=replied_to, sender=user
         )
-        await m.delete()
-        print(format_exc())
+    except Exception as er:
+        return await msg.edit(str(er))
+    message = await reply.reply("", file=file)
+    os.remove(file)
+    await msg.delete()
+    return message
 
-__help__ = """
-Here is the help for **Quotly**:
 
-**Command for anyone**
-**->** `/q`: makes beautiful quotes of the messages.
-**->** `/quote`: alias of q ~
-**->** `/qrate <on/off>`: Toggle quote rating buttons.
-**->** `/qtop`: Preview the top quotes of the chat.
-**->** `/qrand`: show random quotes of the chat 
+__mod_name__ = "𝚀ᴜᴏᴛᴇʟʏ"
 
-**Examples**
-**-** `/q red r 2 p`: makes quote in red color, includes reply, and collects 2 messages in between and sends as a photo.
+__help__ = """   
+
+⍟  /q : `ᴄʀᴇᴀᴛᴇ ǫᴜᴏᴛᴇ `
+
+⍟ /q r :
+
+⍟ /q 2 ᴛᴏ 8 :
 """
