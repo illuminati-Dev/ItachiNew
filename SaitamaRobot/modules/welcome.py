@@ -27,7 +27,7 @@ import SaitamaRobot.modules.sql.log_channel_sql as logsql
 import SaitamaRobot.modules.sql.welcome_sql as sql
 from SaitamaRobot import DEMONS, DEV_USERS, DRAGONS
 from SaitamaRobot import LOGGER as log
-from SaitamaRobot import OWNER_ID, WOLVES, dispatcher, sw
+from SaitamaRobot import OWNER_ID, WOLVES, dispatcher
 from SaitamaRobot.modules.helper_funcs.anonymous import AdminPerms, user_admin
 from SaitamaRobot.modules.helper_funcs.chat_status import is_user_ban_protected
 from SaitamaRobot.modules.helper_funcs.chat_status import user_admin as u_admin
