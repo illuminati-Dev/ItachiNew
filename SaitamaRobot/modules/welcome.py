@@ -37,8 +37,8 @@ from SaitamaRobot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-from Madara.modules.log_channel import loggable
-from Madara.modules.sql.global_bans_sql import is_user_gbanned
+from SaitamaRobot.modules.log_channel import loggable
+from SaitamaRobot.modules.sql.global_bans_sql import is_user_gbanned
 
 VALID_WELCOME_FORMATTERS = [
     "first",
