@@ -9,8 +9,9 @@ from pyrogram.types import Message
 
 #REPO => Your Bots File Name
 import SaitamaRobot.modules.sql.users_sql as sql
-from SaitamaRobot import DEV_USERS, OWNER_ID, pgram
+from SaitamaRobot import DEV_USERS, OWNER_ID
 from SaitamaRobot.modules.sql.users_sql import get_all_users
+from SaitamaRobot import pbot as pgram
 
 # get_arg function to retrieve an argument from a message
 def get_arg(message):
