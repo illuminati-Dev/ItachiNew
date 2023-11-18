@@ -31,9 +31,9 @@ def afk(update, context):
         return
     start_afk_time = time.time()
     reason = args[1] if len(args) >= 2 else "none"
-    start_afk(update.effective_user.id, reason)
-    REDIS.set(f'afk_time_{update.effective_user.id}', start_afk_time)
-    fname = update.effective_user.first_name
+    start_afk(user.id, reason)
+    REDIS.set(f'afk_time_{user.id}', start_afk_time)
+    fname = user.first_name
     try:
         update.effective_message.reply_text(f"{fname} is now Away!")
     except BadRequest:
@@ -52,7 +52,7 @@ def no_longer_afk(update, context):
     if res := end_afk(user.id):
         if message.new_chat_members:  # dont say msg
             return
-        firstname = update.effective_user.first_name
+        firstname = user.first_name
         try:
             options = [
                 "{} Is wasting his time in the chat!",
