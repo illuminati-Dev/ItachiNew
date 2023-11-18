@@ -2,7 +2,7 @@ import re
 from pyrogram import filters, Client
 from typing import Union, Dict
 from SaitamaRobot import pbot as app, BOT_ID
-from SaitamaRobot.utils.permissions import adminsOnly
+from SaitamaRobot.utlis.permissions import adminsOnly
 from SaitamaRobot.modules.mongo.karma_mongo import (
     alpha_to_int,
     get_karma,
