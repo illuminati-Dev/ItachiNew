@@ -1,25 +1,18 @@
 from io import BytesIO
 from time import sleep
-import logging
 
+import SaitamaRobot.modules.sql.users_sql as sql
+from SaitamaRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
+from SaitamaRobot.modules.sql.users_sql import get_all_users
 from telegram import TelegramError, Update
+from telegram.error import BadRequest
 from telegram.ext import (CallbackContext, CommandHandler, Filters,
                           MessageHandler, run_async)
 
-from SaitamaRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
-from SaitamaRobot.modules.sql import users_sql as sql
-from SaitamaRobot.modules.sql.users_sql import get_all_users
-
 USERS_GROUP = 4
 CHAT_GROUP = 5
-
 DEV_AND_MORE = DEV_USERS.append(int(OWNER_ID))
-
-# Define constants for group types
-ALL_GROUPS = "all_groups"
-USERS_ONLY = "users_only"
-GROUPS_ONLY = "groups_only"
 
 
 def get_user_id(username):
@@ -45,7 +38,7 @@ def get_user_id(username):
                 if userdat.username == username:
                     return userdat.id
 
-            except TelegramError as excp:
+            except BadRequest as excp:
                 if excp.message == 'Chat not found':
                     pass
                 else:
@@ -61,79 +54,43 @@ def broadcast(update: Update, context: CallbackContext):
     if len(to_send) >= 2:
         to_group = False
         to_user = False
-
-        if to_send[0].lower() in ('/broadcastall', '/broadcastgroups'):
+        if to_send[0] == '/broadcastgroups':
             to_group = True
-        if to_send[0].lower() in ('/broadcastall', '/broadcastusers'):
+        if to_send[0] == '/broadcastusers':
             to_user = True
         else:
             to_group = to_user = True
-
         chats = sql.get_all_chats() or []
         users = get_all_users()
         failed = 0
         failed_user = 0
-
         if to_group:
-            failed += send_messages_to_groups(context, to_send[1], chats)
+            for chat in chats:
+                try:
+                    context.bot.sendMessage(
+                        int(chat.chat_id),
+                        to_send[1],
+                        parse_mode="MARKDOWN",
+                        disable_web_page_preview=True)
+                    sleep(0.1)
+                except TelegramError:
+                    failed += 1
         if to_user:
-            failed_user += send_messages_to_users(context, to_send[1], users)
-
+            for user in users:
+                try:
+                    context.bot.sendMessage(
+                        int(user.user_id),
+                        to_send[1],
+                        parse_mode="MARKDOWN",
+                        disable_web_page_preview=True)
+                    sleep(0.1)
+                except TelegramError:
+                    failed_user += 1
         update.effective_message.reply_text(
             f"Broadcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
         )
 
 
-def send_messages_to_groups(context, message, groups):
-    failed = 0
-    for chat in groups:
-        try:
-            context.bot.sendMessage(
-                int(chat.chat_id),
-                message,
-                parse_mode="MARKDOWN",
-                disable_web_page_preview=True)
-            sleep(0.1)
-        except TelegramError:
-            failed += 1
-            logging.exception("Error broadcasting to group %s", chat.chat_id)
-    return failed
-
-
-def send_messages_to_users(context, message, users):
-    failed_user = 0
-    for user in users:
-        try:
-            context.bot.sendMessage(
-                int(user.user_id),
-                message,
-                parse_mode="MARKDOWN",
-                disable_web_page_preview=True)
-            sleep(0.1)
-        except TelegramError:
-            failed_user += 1
-            logging.exception("Error broadcasting to user %s", user.user_id)
-    return failed_user
-
-
-def get_user_info(user_id):
-    if user_id in [777000, 1087968824]:
-        return """╘══「 Groups count: <code>IDK</code> 」"""
-    if user_id == dispatcher.bot.id:
-        return """╘══「 Groups count: <code>IDK</code> 」"""
-    num_chats = sql.get_user_num_chats(user_id)
-    return f"""╘══「 Groups count: <code>{num_chats}</code> 」"""
-
-
-def get_stats():
-    return f"𖣘 {sql.num_users()} users, across {sql.num_chats()} chats"
-
-
-def migrate(old_chat_id, new_chat_id):
-    sql.migrate_chat(old_chat_id, new_chat_id)
-
-
-@dev_plus
 def log_user(update: Update, context: CallbackContext):
     chat = update.effective_chat
     msg = update.effective_message
@@ -148,7 +105,6 @@ def log_user(update: Update, context: CallbackContext):
 
     if msg.forward_from:
         sql.update_user(msg.forward_from.id, msg.forward_from.username)
-
 
 @sudo_plus
 def chats(update: Update, context: CallbackContext):
@@ -182,15 +138,20 @@ def chat_checker(update: Update, context: CallbackContext):
 
 
 def __user_info__(user_id):
-    return get_user_info(user_id)
+    if user_id in [777000, 1087968824]:
+        return """╘══「 Groups count: <code>IDK</code> 」"""
+    if user_id == dispatcher.bot.id:
+        return """╘══「 Groups count: <code>IDK</code> 」"""
+    num_chats = sql.get_user_num_chats(user_id)
+    return f"""╘══「 Groups count: <code>{num_chats}</code> 」"""
 
 
 def __stats__():
-    return get_stats()
+    return f"𖣘 {sql.num_users()} users, across {sql.num_chats()} chats"
 
 
 def __migrate__(old_chat_id, new_chat_id):
-    migrate(old_chat_id, new_chat_id)
+    sql.migrate_chat(old_chat_id, new_chat_id)
 
 
 __help__ = ""  # no help string
@@ -207,4 +168,6 @@ dispatcher.add_handler(CHATLIST_HANDLER)
 dispatcher.add_handler(CHAT_CHECKER_HANDLER, CHAT_GROUP)
 
 __mod_name__ = "Users"
-__handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER, CHATLIST_HANDLER]
+
+__handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER,
+                CHATLIST_HANDLER]
