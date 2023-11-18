@@ -12,7 +12,7 @@ from telethon import TelegramClient
 from Python_ARQ import ARQ
 from telegraph import Telegraph
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
-from .services.quoteapi import Quotly
+from SaitamaRobot.services.quoteapi import Quotly
 
 StartTime = time.time()
 
