@@ -2,7 +2,6 @@ from PIL import Image, ImageDraw, ImageFont
 import textwrap
 import os
 from pyrogram import filters
-from SaitamaRobot.events import register
 from SaitamaRobot import TEMP_DOWNLOAD_DIRECTORY
 from SaitamaRobot import pbot as app
 
@@ -11,7 +10,7 @@ font_path = "SaitamaRobot/resources/American Captain.ttf"
 font_size = 14
 font = ImageFont.truetype(font_path, size=font_size)
 
-@register(filters.command("mmf") & filters.reply)
+@app.on_message(filters.command("mmf") & filters.reply)
 async def mmf_func(_, message):
     if not message.reply_to_message:
         await message.reply("Reply to a sticker/image with meme text.")
