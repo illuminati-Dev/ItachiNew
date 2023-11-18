@@ -42,7 +42,6 @@ def LastOnline(user: User):
     elif user.status == 'offline':
         return datetime.fromtimestamp(user.status.date).strftime("%a, %d %b %Y, %H:%M:%S")
 
-
 def FullName(user: User):
     return user.first_name + " " + user.last_name if user.last_name else user.first_name
 
@@ -66,14 +65,19 @@ async def whois(client, message):
         return
     desc = await client.get_chat(get_user)
     desc = desc.description
-    await message.reply_text(
-            infotext.format(
-                full_name=FullName(user),
-                user_id=user.id,
-                user_dc=user.dc_id,
-                first_name=user.first_name,
-                last_name=user.last_name if user.last_name else "",
-                username=user.username if user.username else "",
-                last_online=LastOnline(user),
-                bio=desc if desc else "`No bio set up.`"),
-            disable_web_page_preview=True)
+    user_photo = await client.get_profile_photos(user.id, limit=1)
+    photo_url = user_photo[0].file_id if user_photo else None
+
+    reply_text = infotext.format(
+        full_name=FullName(user),
+        user_id=user.id,
+        user_dc=user.dc_id,
+        first_name=user.first_name,
+        last_name=user.last_name if user.last_name else "",
+        username=user.username if user.username else "",
+        last_online=LastOnline(user),
+        bio=desc if desc else "`No bio set up.`"
+    )
+
+    await message.reply_photo(photo=photo_url, caption=reply_text, disable_web_page_preview=True)
+
