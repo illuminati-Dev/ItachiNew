@@ -2,39 +2,36 @@ import speedtest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext, CallbackQueryHandler
 
-from SaitamaRobot import DEV_USERS, dispatcher
+from SaitamaRobot import DEV_USERS, SUPPORT_CHAT, dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
 
-
 def convert(speed):
     return round(int(speed) / 1048576, 2)
-
 
 @dev_plus
 def speedtestxyz(update: Update, context: CallbackContext):
     buttons = [
         [
-            InlineKeyboardButton("ɪᴍᴀɢᴇ", callback_data="speedtest_image"),
-            InlineKeyboardButton("ᴛᴇxᴛ", callback_data="speedtest_text"),
+            InlineKeyboardButton("Image", callback_data="speedtest_image"),
+            InlineKeyboardButton("Text", callback_data="speedtest_text"),
         ],
     ]
     update.effective_message.reply_text(
-        "sᴇʟᴇᴄᴛ sᴘᴇᴇᴅᴛᴇsᴛ ᴍᴏᴅᴇ",
+        "Select Speedtest Mode",
         reply_markup=InlineKeyboardMarkup(buttons),
     )
-
 
 def speedtestxyz_callback(update: Update, context: CallbackContext):
     query = update.callback_query
 
     if query.from_user.id in DEV_USERS:
-        msg = update.effective_message.edit_text("ʀᴜɴɴɪɴɢ ғᴏʀ sᴘᴇᴇᴅᴛᴇsᴛ....")
+        msg = update.effective_message.edit_text("Running Speedtest....")
         speed = speedtest.Speedtest()
         speed.get_best_server()
         speed.download()
         speed.upload()
-        replymsg = "sᴘᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs:"
+        replymsg = "Speedtest Results:"
 
         if query.data == "speedtest_image":
             speedtest_image = speed.results.share()
@@ -46,11 +43,10 @@ def speedtestxyz_callback(update: Update, context: CallbackContext):
 
         elif query.data == "speedtest_text":
             result = speed.results.dict()
-            replymsg += f"\nᴅᴏᴡɴʟᴏᴀᴅ: `{convert(result['download'])}Mb/s`\nᴜᴘʟᴏᴀᴅ: `{convert(result['upload'])}ᴍʙ/s`\nᴘɪɴɢ: `{result['ping']}`"
+            replymsg += f"\nDownload: `{convert(result['download'])}Mb/s`\nUpload: `{convert(result['upload'])}ᴍʙ/s`\nPing: `{result['ping']}`"
             update.effective_message.edit_text(replymsg, parse_mode=ParseMode.MARKDOWN)
     else:
-        query.answer("ʏᴏᴜ ᴀʀᴇ ʀᴇǫᴜɪʀᴇᴅ ᴛᴏ ᴊᴏɪɴ @{SUPPORT_CHAT} ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ.")
-
+        query.answer(f"You are required to join @{SUPPORT_CHAT} to use this command.")
 
 SPEED_TEST_HANDLER = DisableAbleCommandHandler(
     "speedtest", speedtestxyz, run_async=True
@@ -64,6 +60,6 @@ SPEED_TEST_CALLBACKHANDLER = CallbackQueryHandler(
 dispatcher.add_handler(SPEED_TEST_HANDLER)
 dispatcher.add_handler(SPEED_TEST_CALLBACKHANDLER)
 
-__mod_name__ = "𝚂ᴘᴇᴇᴅᴛᴇsᴛ"
+__mod_name__ = "Speedtest"
 __command_list__ = ["speedtest"]
 __handlers__ = [SPEED_TEST_HANDLER, SPEED_TEST_CALLBACKHANDLER]
