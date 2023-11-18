@@ -16,16 +16,16 @@ class Config(object):
 
     API_ID = 4042547  # integer value, dont use ""
     API_HASH = "26edf5e69b62da2b6c4e3b8336e22f34"
-    TOKEN = "6410782788:AAHFmxIK2349KvqF1lBd8c_m3dHj_qgoKk0"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 6299128233  # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "BIackHatDev"
-    SUPPORT_CHAT = 'BHatsGroup'  # Your own group for support, do not add the @
-    JOIN_LOGGER = -1002058050288  # Prints any new group the bot is added to, prints just the name and ID.
-    EVENT_LOGS = -1002058050288  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
+    TOKEN = "5520008350:AAHQDNTlI_XelDP0pFS3UMaq8P67gT2A7Ps"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
+    OWNER_ID = 6265459491  # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    OWNER_USERNAME = "The_NanamiiKento"
+    SUPPORT_CHAT = 'UchihaPolice_Support'  # Your own group for support, do not add the @
+    JOIN_LOGGER = -1001922732593  # Prints any new group the bot is added to, prints just the name and ID.
+    EVENT_LOGS = -1001922732593  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
     ERROR_LOGS = 6299128233  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
 
     # RECOMMENDED
-    DATABASE_URL = 'postgresql://lucyhrkm:l54ss7__gNQCDpWWmsFi30wNc2jg5zex@tyke.db.elephantsql.com/lucyhrkm'  # needed for any database modules
+    DATABASE_URL = 'postgresql://hgjpnjvt:88RutjK5kfbVnN1qK_CFVWoB5kUqpmfz@jelani.db.elephantsql.com/hgjpnjvt'  # needed for any database modules
     LOAD = []
     NO_LOAD = ['cleaner', 'connection', 'tts']
     WEBHOOK = False
@@ -79,8 +79,8 @@ class Config(object):
     TEMP_DOWNLOAD_DIRECTORY = './'
     ARQ_API_KEY = "PDQVNR-HVFFFP-ZGVHUS-ZHWPFH-ARQ"
     ARQ_API_URL = "https://arq.hamker.dev"
-    BOT_ID = 6295293651
-    BOT_USERNAME = "@asimpletelegrambot"
+    BOT_ID = 6603542603
+    BOT_USERNAME = "@UchihaItachi_xBot"
     ANI_DB = None
     CHAT_DB = None
     ALLOW_CHATS = True
