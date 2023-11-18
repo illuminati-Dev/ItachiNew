@@ -13,7 +13,7 @@ from SaitamaRobot.modules.mongo.karma_mongo import (
     karma_on,
     update_karma,
 )
-from SaitamaRobot.utils.filter_groups import karma_negative_group, karma_positive_group
+from SaitamaRobot.utlis.filter_groups import karma_negative_group, karma_positive_group
 from SaitamaRobot import aiohttpsession
 
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|tnx|ty|thank you|thanx|thanks|pro|cool|good|👍|nice|noice|piro|Oho|oho|OwO|UwU|Nais|)$"
