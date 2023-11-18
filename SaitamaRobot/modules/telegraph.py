@@ -6,6 +6,7 @@ import os
 from PIL import Image
 from datetime import datetime
 from telegraph import Telegraph, upload_file, exceptions
+
 babe = "SaitamaRobot"
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=babe)
@@ -36,7 +37,6 @@ async def _(event):
                 media_urls = upload_file(downloaded_file_name)
             except exceptions.TelegraphException as exc:
                 await h.edit("ERROR: " + str(exc))
-                os.remove(downloaded_file_name)
             else:
                 end = datetime.now()
                 ms_two = (end - start).seconds
@@ -44,8 +44,7 @@ async def _(event):
                 await h.edit("Uploaded to [Telegraph](https://telegra.ph{}) in {} seconds.".format(media_urls[0], (ms + ms_two)), link_preview=True)
         elif input_str == "text":
             user_object = await tbot.get_entity(r_message.sender_id)
-            title_of_page = user_object.first_name # + " " + user_object.last_name
-            # apparently, all Users do not have last_name field
+            title_of_page = user_object.first_name
             if optional_title:
                 title_of_page = optional_title
             page_content = r_message.message
