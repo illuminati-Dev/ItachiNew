@@ -4,7 +4,7 @@ from SaitamaRobot import pbot as pgram
 from SaitamaRobot.modules.mongo.couples_mongo import get_couple, save_couple
 from pyrogram import filters
 from datetime import datetime
-
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # Date and time
 def dt():
@@ -12,15 +12,12 @@ def dt():
     dt_string = now.strftime("%d/%m/%Y %H:%M")
     return dt_string.split(' ')
 
-
 def dt_tom():
     return str(int(dt()[0].split('/')[0]) + 1)+"/" + \
         dt()[0].split('/')[1]+"/" + dt()[0].split('/')[2]
 
-
 today = str(dt()[0])
 tomorrow = str(dt_tom())
-
 
 @pgram.on_message(filters.command("couples"))
 async def couple(_, message):
@@ -45,13 +42,18 @@ async def couple(_, message):
             c1_mention = (await pgram.get_users(c1_id)).mention
             c2_mention = (await pgram.get_users(c2_id)).mention
 
-            couple_selection_message = f"""**Couple of the day:**
-{c1_mention} + {c2_mention} = ❤
-__New couple of the day may be chosen at 12AM {tomorrow}__"""
+            couple_selection_message = f"**Couple of the day:**\n\n{c1_mention} + {c2_mention} = ❤\n\n__New couple of the day may be chosen at 12AM {tomorrow}__"
+            
+            keyboard = InlineKeyboardMarkup([
+                [InlineKeyboardButton("View Couple", url=f'tg://openmessage?user_id={c1_id}'), InlineKeyboardButton("View Couple", url=f'tg://openmessage?user_id={c2_id}')]
+            ])
+
             await pgram.send_message(
                 message.chat.id,
-                text=couple_selection_message
+                text=couple_selection_message,
+                reply_markup=keyboard
             )
+            
             couple = {
                 "c1_id": c1_id,
                 "c2_id": c2_id
@@ -63,14 +65,18 @@ __New couple of the day may be chosen at 12AM {tomorrow}__"""
             c2_id = int(is_selected['c2_id'])
             c1_name = (await pgram.get_users(c1_id)).first_name
             c2_name = (await pgram.get_users(c2_id)).first_name
-            couple_selection_message = f"""Couple of the day:
-[{c1_name}](tg://openmessage?user_id={c1_id}) + [{c2_name}](tg://openmessage?user_id={c2_id}) = 💜
-__New couple of the day may be chosen at 12AM {tomorrow}__"""
+            couple_selection_message = f"**Couple of the day:**\n\n[{c1_name}](tg://openmessage?user_id={c1_id}) + [{c2_name}](tg://openmessage?user_id={c2_id}) = 💜\n\n__New couple of the day may be chosen at 12AM {tomorrow}__"
+            
+            keyboard = InlineKeyboardMarkup([
+                [InlineKeyboardButton("View Couple", url=f'tg://openmessage?user_id={c1_id}'), InlineKeyboardButton("View Couple", url=f'tg://openmessage?user_id={c2_id}')]
+            ])
+
             await pgram.send_message(
                 message.chat.id,
-                text=couple_selection_message
+                text=couple_selection_message,
+                reply_markup=keyboard
             )
+            
     except Exception as e:
         print(e)
-        await message.reply_text(e)
-
+        await message.reply_text(str(e))
