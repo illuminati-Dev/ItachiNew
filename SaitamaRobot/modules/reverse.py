@@ -8,14 +8,13 @@ from urllib.error import URLError, HTTPError
 from bs4 import BeautifulSoup
 from pyrogram import filters
 from pyrogram.types import InputMediaPhoto
-# from pyrogram.errors import TelegramError
 from SaitamaRobot import pbot as app
 
 opener = urllib.request.build_opener()
 useragent = 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G920V Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mobile Safari/537.36'
 opener.addheaders = [('User-agent', useragent)]
 
-@app.on_message(filters.command("reverse") | filters.command("grs") | filters.command("pp"))
+@app.on_message(filters.command(["reverse", "grs", "pp"]))
 async def reverse(_, message):
     if os.path.isfile("okgoogle.png"):
         os.remove("okgoogle.png")
