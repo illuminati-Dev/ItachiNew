@@ -14,9 +14,9 @@ class Config(object):
     # REQUIRED
     # Login to https://my.telegram.org and fill in these slots with the details given by it
 
-    API_ID = 4042547  # integer value, dont use ""
-    API_HASH = "26edf5e69b62da2b6c4e3b8336e22f34"
-    TOKEN = "5520008350:AAHQDNTlI_XelDP0pFS3UMaq8P67gT2A7Ps"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
+    API_ID = 19099900  # integer value, dont use ""
+    API_HASH = "2b445de78e5baf012a0793e60bd4fbf5"
+    TOKEN = "5520008350:AAHRQprtOTKfXVD_e-OaqrFLRjG1OR1wrK4"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
     OWNER_ID = 6265459491  # If you dont know, run the bot and do /id in your private chat with it, also an integer
     OWNER_USERNAME = "The_NanamiiKento"
     SUPPORT_CHAT = 'UchihaPolice_Support'  # Your own group for support, do not add the @
