@@ -267,6 +267,6 @@ tg.MessageHandler = CustomMessageHandler
 
 async def initt():
     await pbot.start()
-    await pbot.send_message(-1002101193895,"**PYROGRAM V2 ACTIVATED ✨**")
+    await pbot.send_message(-1002058050288,"**PYROGRAM V2 ACTIVATED ✨**")
     
 loop.run_until_complete(initt()) 
