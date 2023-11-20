@@ -21,7 +21,7 @@ from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 
-TEST = -1002101193895
+TEST = -1002058050288
 
 def get_readable_time(seconds: int) -> str:
     count = 0
