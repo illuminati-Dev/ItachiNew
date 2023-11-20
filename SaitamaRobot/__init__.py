@@ -2,6 +2,7 @@ import logging
 import os
 import sys
 import time
+import asyncio
 from os import cpu_count
 from redis import StrictRedis
 from pyrogram import Client, errors
@@ -12,7 +13,6 @@ from telethon import TelegramClient
 from Python_ARQ import ARQ
 from telegraph import Telegraph
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
-#from SaitamaRobot.services.quoteapi import Quotly
 
 StartTime = time.time()
 
@@ -244,6 +244,10 @@ dispatcher = updater.dispatcher
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
+loop = asyncio.get_event_loop()
+
+
+
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
 WOLVES = list(WOLVES)
@@ -261,7 +265,8 @@ tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
 
-
-# -------Quote-------
-#quotly = Quotly()
-# -------------------
+async def initt():
+    await pbot.start()
+    await pbot.send_message(-1002101193895,"**PYROGRAM V2 ACTIVATED ✨**")
+    
+loop.run_until_complete(initt()) 
