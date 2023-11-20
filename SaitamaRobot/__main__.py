@@ -21,6 +21,7 @@ from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 
+TEST = -1002101193895
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -595,9 +596,9 @@ def migrate_chats(update: Update, _: CallbackContext):
 
 
 def main():
-    if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
+    if TEST is not None:
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}",
+            dispatcher.bot.sendMessage(TEST,
                                        "[Any technique is worthless before my eyes!](https://telegra.ph/file/989f55a82dc6de16fa01b.mp4)",
                                        parse_mode=ParseMode.MARKDOWN)
         except Unauthorized:
@@ -671,5 +672,6 @@ def main():
 if __name__ == '__main__':
     LOGGER.info(f"Successfully loaded modules: {str(ALL_MODULES)}")
     telethn.start(bot_token=TOKEN)
-    pbot.start()
+    LOGGER.info("Telethon Started.")
+   # pbot.start()
     main()
