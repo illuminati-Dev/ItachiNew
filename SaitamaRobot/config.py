@@ -25,7 +25,7 @@ class Config(object):
     ERROR_LOGS = 6299128233  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
 
     # RECOMMENDED
-    DATABASE_URL = 'postgresql://hgjpnjvt:88RutjK5kfbVnN1qK_CFVWoB5kUqpmfz@jelani.db.elephantsql.com/hgjpnjvt'  # needed for any database modules
+    DATABASE_URL = 'postgresql://bruggiuy:YQBqeOjfMDHca7RTD4Cu7u_df2TxzgSf@rain.db.elephantsql.com/bruggiuy'  # needed for any database modules
     LOAD = []
     NO_LOAD = ['cleaner', 'connection', 'tts']
     WEBHOOK = False
