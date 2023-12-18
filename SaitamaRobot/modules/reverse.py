@@ -10,7 +10,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram import Client, filters
 
 # Replace `YourRobot` with your robot and import pyrogram client from it.
-from Madara import pgram as app
+from SaitamaRobot import pbot as app
 
 API_URL: str = "https://sasta-api.vercel.app/googleImageSearch"
 
@@ -23,22 +23,19 @@ COMMANDS: List[str] = [
 async_client: httpx.AsyncClient = httpx.AsyncClient(timeout=120)
 
 class STRINGS:
-    REPLY_TO_MEDIA: str = "📸 Please reply to a message that contains one of the supported media types, such as a photo, sticker, or image file."
-    UNSUPPORTED_MEDIA_TYPE: str = "⚠️ <b>Unsupported media type!</b>\n📸 Please reply with a supported media type: image, sticker, or image file."
+    REPLY_TO_MEDIA: str = "Please reply to a photo, sticker, or image file."
+    UNSUPPORTED_MEDIA_TYPE: str = "<b>Unsupported media type!</b>\n📸 Please reply with a image, sticker, or image file."
 
     DOWNLOADING_MEDIA: str = "⏳ Downloading media..."
-    UPLOADING_TO_API_SERVER: str = "🚀 Uploading media to <b>API Server</b>... 📡"
-    PARSING_RESULT: str = "💻 Parsing result..."
+    UPLOADING_TO_API_SERVER: str = "🚀 Uploading media..</b>... 📡"
+    PARSING_RESULT: str = "Parsing result..."
 
     EXCEPTION_OCCURRED: str = "❌ <b>Exception occurred!</b>\n\n<b>Exception:</b> {}"
 
     RESULT: str = """
-🔤 <b>Query:</b> <code>{query}</code>
-🔗 <b>Page Link:</b> <a href="{page_url}">Link</a>
-
-⌛️ <b>Time Taken:</b> <code>{time_taken}</code> seconds.
+<b>Output:</b> <code>{query}</code>
     """
-    OPEN_PAGE: str = "↗️ Open Page"
+    OPEN_PAGE: str = "{query}"
 
 @app.on_message(filters.command(COMMANDS))
 async def on_reverse(client: Client, message: Message) -> None:
