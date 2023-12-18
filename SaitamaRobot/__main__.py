@@ -23,6 +23,7 @@ from telegram.utils.helpers import escape_markdown
 
 TEST = -1002058050288
 
+@run_async
 def get_readable_time(seconds: int) -> str:
     count = 0
     ping_time = ""
@@ -160,7 +161,7 @@ for module_name in ALL_MODULES:
         USER_SETTINGS[imported_module.__mod_name__.lower()] = imported_module
 
 
-# do not async
+@run_async
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
@@ -171,7 +172,7 @@ def send_help(chat_id, text, keyboard=None):
         disable_web_page_preview=True,
         reply_markup=keyboard)
 
-
+@run_async
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -225,7 +226,7 @@ def start(update: Update, context: CallbackContext):
             parse_mode=ParseMode.HTML)
 
 
-# for test purposes
+@run_async
 def error_callback(update: Update, context: CallbackContext):
     error = context.error
     try:
@@ -254,7 +255,7 @@ def error_callback(update: Update, context: CallbackContext):
         print(error)
         # handle all other telegram related errors
 
-
+@run_async
 def help_button(update, context):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
@@ -311,7 +312,7 @@ def help_button(update, context):
     except BadRequest:
         pass
 
-
+@run_async
 def makima_about_callback(update, context):
     query = update.callback_query
     if query.data == "makima_":
@@ -341,7 +342,7 @@ def makima_about_callback(update, context):
 
         )
 
-
+@run_async
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     args = update.effective_message.text.split(None, 1)
@@ -394,7 +395,7 @@ def get_help(update: Update, context: CallbackContext):
     else:
         send_help(chat.id, HELP_STRINGS)
 
-
+@run_async
 def send_settings(chat_id, user_id, user=False):
     if user:
         if USER_SETTINGS:
@@ -429,7 +430,7 @@ def send_settings(chat_id, user_id, user=False):
             "in a group chat you're admin in to find its current settings!",
             parse_mode=ParseMode.MARKDOWN)
 
-
+@run_async
 def settings_button(update: Update, context: CallbackContext):
     query = update.callback_query
     user = update.effective_user
@@ -514,7 +515,7 @@ def settings_button(update: Update, context: CallbackContext):
             LOGGER.exception("Exception in settings buttons. %s",
                              str(query.data))
 
-
+@run_async
 def get_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -543,7 +544,7 @@ def get_settings(update: Update, context: CallbackContext):
     else:
         text = "Click here to check your settings."
 
-
+@run_async
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
@@ -575,7 +576,7 @@ def donate(update: Update, context: CallbackContext):
             update.effective_message.reply_text(
                 "Contact me in PM first to get donation information.")
 
-
+@run_async
 def migrate_chats(update: Update, _: CallbackContext):
     msg = update.effective_message  # type: Optional[Message]
     if msg.migrate_to_chat_id:
@@ -594,7 +595,7 @@ def migrate_chats(update: Update, _: CallbackContext):
     LOGGER.info("Successfully migrated!")
     raise DispatcherHandlerStop
 
-
+@run_async
 def main():
     if TEST is not None:
         try:
