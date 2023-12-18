@@ -63,7 +63,7 @@ async def whois(client, message):
         return
     desc = await client.get_chat(get_user)
     desc = desc.description
-    user_photo = await client.get_profile_photos(user.id, limit=1)
+    user_photo = await user.get_profile_photos(limit=1)
     mutual_contacts = await client.get_users_mutual_contacts(user.id)
 
     profile_link = f"https://t.me/{user.username}" if user.username else f"tg://user?id={user.id}"
@@ -109,3 +109,5 @@ async def whois(client, message):
             mutual_contacts=len(mutual_contacts),
             profile_link=profile_link
         ), disable_web_page_preview=True)
+
+# ... (rest of the code, if any)
