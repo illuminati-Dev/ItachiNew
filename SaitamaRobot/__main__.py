@@ -595,7 +595,6 @@ def migrate_chats(update: Update, _: CallbackContext):
     LOGGER.info("Successfully migrated!")
     raise DispatcherHandlerStop
 
-@run_async
 def main():
     if TEST is not None:
         try:
