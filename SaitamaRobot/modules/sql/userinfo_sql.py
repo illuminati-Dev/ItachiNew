@@ -28,7 +28,7 @@ class UserBio(BASE):
         self.bio = bio
 
     def __repr__(self):
-        return "<User info %d>" % self.user_id
+        return "<User bio %d>" % self.user_id
 
 
 UserInfo.__table__.create(checkfirst=True)
@@ -38,10 +38,12 @@ INSERTION_LOCK = threading.RLock()
 
 
 def get_user_me_info(user_id):
-    userinfo = SESSION.query(UserInfo).get(user_id)
-    SESSION.close()
-    if userinfo:
-        return userinfo.info
+    try:
+        userinfo = SESSION.query(UserInfo).get(user_id)
+        if userinfo:
+            return userinfo.info
+    finally:
+        SESSION.close()
     return None
 
 
@@ -57,10 +59,12 @@ def set_user_me_info(user_id, info):
 
 
 def get_user_bio(user_id):
-    userbio = SESSION.query(UserBio).get(user_id)
-    SESSION.close()
-    if userbio:
-        return userbio.bio
+    try:
+        userbio = SESSION.query(UserBio).get(user_id)
+        if userbio:
+            return userbio.bio
+    finally:
+        SESSION.close()
     return None
 
 
