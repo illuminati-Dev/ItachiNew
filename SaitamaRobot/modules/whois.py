@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from pyrogram import filters
 from pyrogram.types import User, Message
 from pyrogram.raw import functions
@@ -8,23 +7,22 @@ from SaitamaRobot import pbot
 
 def ReplyCheck(message: Message):
     reply_id = None
-
     if message.reply_to_message:
         reply_id = message.reply_to_message.message_id
-
     elif not message.from_user.is_self:
         reply_id = message.message_id
-
     return reply_id
 
 infotext = (
-    "**[{full_name}](tg://user?id={user_id})**\n"
+    "**[{full_name}]({profile_link})**\n"
     " * UserID: `{user_id}`\n"
     " * First Name: `{first_name}`\n"
     " * Last Name: `{last_name}`\n"
     " * Username: `{username}`\n"
     " * Last Online: `{last_online}`\n"
-    " * Bio: {bio}")
+    " * Bio: {bio}\n"
+    " * Mutual Contacts: `{mutual_contacts}`"
+)
 
 def LastOnline(user: User):
     if user.is_bot:
@@ -66,18 +64,48 @@ async def whois(client, message):
     desc = await client.get_chat(get_user)
     desc = desc.description
     user_photo = await client.get_profile_photos(user.id, limit=1)
-    photo_url = user_photo[0].file_id if user_photo else None
+    mutual_contacts = await client.get_users_mutual_contacts(user.id)
 
-    reply_text = infotext.format(
-        full_name=FullName(user),
-        user_id=user.id,
-        user_dc=user.dc_id,
-        first_name=user.first_name,
-        last_name=user.last_name if user.last_name else "",
-        username=user.username if user.username else "",
-        last_online=LastOnline(user),
-        bio=desc if desc else "`No bio set up.`"
-    )
+    profile_link = f"https://t.me/{user.username}" if user.username else f"tg://user?id={user.id}"
 
-    await message.reply_photo(photo=photo_url, caption=reply_text, disable_web_page_preview=True)
-
+    if user_photo:
+        photo = user_photo[0]
+        if photo.file_type == "video":
+            # Handle video profile photo
+            await message.reply_video(video=photo.file_id, caption=infotext.format(
+                full_name=FullName(user),
+                user_id=user.id,
+                first_name=user.first_name,
+                last_name=user.last_name if user.last_name else "",
+                username=user.username if user.username else "",
+                last_online=LastOnline(user),
+                bio=desc if desc else "`No bio set up.`",
+                mutual_contacts=len(mutual_contacts),
+                profile_link=profile_link
+            ), disable_web_page_preview=True)
+        else:
+            # Handle regular photo
+            await message.reply_photo(photo=photo.file_id, caption=infotext.format(
+                full_name=FullName(user),
+                user_id=user.id,
+                first_name=user.first_name,
+                last_name=user.last_name if user.last_name else "",
+                username=user.username if user.username else "",
+                last_online=LastOnline(user),
+                bio=desc if desc else "`No bio set up.`",
+                mutual_contacts=len(mutual_contacts),
+                profile_link=profile_link
+            ), disable_web_page_preview=True)
+    else:
+        # Handle case when there are no profile photos
+        await message.reply_text(infotext.format(
+            full_name=FullName(user),
+            user_id=user.id,
+            first_name=user.first_name,
+            last_name=user.last_name if user.last_name else "",
+            username=user.username if user.username else "",
+            last_online=LastOnline(user),
+            bio=desc if desc else "`No bio set up.`",
+            mutual_contacts=len(mutual_contacts),
+            profile_link=profile_link
+        ), disable_web_page_preview=True)
