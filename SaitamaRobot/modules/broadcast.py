@@ -7,8 +7,8 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-#REPO => Your Bots File Name
-import SaitamaRobot.modules.sql.users_sql as sql
+# REPO => Your Bots File Name
+from SaitamaRobot.modules.sql import users_sql as sql
 from SaitamaRobot import DEV_USERS, OWNER_ID
 from SaitamaRobot.modules.sql.users_sql import get_all_users
 from SaitamaRobot import pbot as pgram
@@ -16,10 +16,7 @@ from SaitamaRobot import pbot as pgram
 # get_arg function to retrieve an argument from a message
 def get_arg(message):
     args = message.text.split(" ")
-    if len(args) > 1:
-        return args[1]
-    else:
-        return None
+    return args[1] if len(args) > 1 else None
 
 # Broadcast Function
 @pgram.on_message(filters.command("broadcast"))
@@ -53,21 +50,13 @@ async def broadcast_cmd(client: Client, message: Message):
     users = get_all_users()
 
     if "-all" in texttt:
-        texttt.append("-user")
-        texttt.append("-group")
+        texttt.extend(["-user", "-group"])
 
     if "-user" in texttt:
         for chat in users:
-            if message.reply_to_message:
-                msg = message.reply_to_message
-            else:
-                msg = get_arg(message)
+            msg = message.reply_to_message or get_arg(message)
             try:
-                if message.reply_to_message:
-                    aa = await msg.copy(chat.user_id)
-                else:
-                    aa = await client.send_message(chat.user_id, msg)
-
+                aa = await msg.copy(chat.user_id)
                 usersss += 1
                 await asyncio.sleep(0.3)
             except Exception:
@@ -75,16 +64,9 @@ async def broadcast_cmd(client: Client, message: Message):
                 await asyncio.sleep(0.3)
     if "-group" in texttt:
         for chat in chats:
-            if message.reply_to_message:
-                msg = message.reply_to_message
-            else:
-                msg = get_arg(message)
+            msg = message.reply_to_message or get_arg(message)
             try:
-                if message.reply_to_message:
-                    aa = await msg.copy(chat.chat_id)
-                else:
-                    aa = await client.send_message(chat.chat_id, msg)
-
+                aa = await msg.copy(chat.chat_id)
                 chatttt += 1
                 await asyncio.sleep(0.3)
             except Exception:
