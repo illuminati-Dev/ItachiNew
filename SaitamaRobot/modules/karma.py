@@ -14,7 +14,6 @@ from SaitamaRobot.modules.mongo.karma_mongo import (
     update_karma,
 )
 from SaitamaRobot.utlis.filter_groups import karma_negative_group, karma_positive_group
-from SaitamaRobot import aiohttpsession
 
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|tnx|ty|thank you|thanx|thanks|pro|cool|good|👍|nice|noice|piro|Oho|oho|OwO|UwU|Nais|)$"
 regex_downvote = r"^(\-|\-\-|\-1|👎|noob|Noob|gross|fuck off|Bhakk|Abe Saale|Tauba|Tauba Tauba Tuba Saara Mood Kharab Kardiya)$"
