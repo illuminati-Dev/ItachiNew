@@ -438,21 +438,21 @@ def set_about_me(update: Update, context: CallbackContext):
 def stats(update, context):
     #db_size = SESSION.execute("SELECT pg_size_pretty(pg_database_size(current_database()))").scalar_one_or_none()
     #botuptime = get_readable_time((time.time() - StartTime))
-    #status += "*➢ Python Version:* " + python_version() + "\n"
-    #status += "*➢ python-Telegram-Bot:* " + str(ptbver) + "\n"
-    #status += "*➢ pyrogram:* " + str(pyrov) + "\n"
-    #status += "*➢ Sql Db:* " + str(db_size) + "\n"
-    #status += "*➢ Bot-Uptime:* " + str(botuptime) + "\n" 
+    #status += "**➢ Python Version:** " + python_version() + "\n"
+    #status += "**➢ python-Telegram-Bot:** " + str(ptbver) + "\n"
+    #status += "**➢ pyrogram:** " + str(pyrov) + "\n"
+    #status += "**➢ Sql Db:** " + str(db_size) + "\n"
+    #status += "**➢ Bot-Uptime:** " + str(botuptime) + "\n" 
     process = subprocess.Popen(
         "neofetch --stdout", shell=True, text=True, stdout=subprocess.PIPE
     )
     db_size = SESSION.execute("SELECT pg_size_pretty(pg_database_size(current_database()))").scalar_one_or_none()
     botuptime = get_readable_time((time.time() - StartTime))
-    status = "*➢ Python Version:* " + python_version() + "\n"
-    status += "*➢ python-Telegram-Bot:* " + str(ptbver) + "\n"
-    status += "*➢ pyrogram:* " + str(pyrov) + "\n"
-    status += "*➢ Sql Db:* " + str(db_size) + "\n"
-    status += "*➢ Bot-Uptime:* " + str(botuptime) + "\n"
+    status = "**➢ Python Version:** " + python_version() + "\n"
+    status += "**➢ python-Telegram-Bot:** " + str(ptbver) + "\n"
+    status += "**➢ pyrogram:** " + str(pyrov) + "\n"
+    status += "**➢ Sql Db:** " + str(db_size) + "\n"
+    status += "**➢ Bot-Uptime:** " + str(botuptime) + "\n"
     output = process.communicate()[0] 
     try:
         update.effective_message.reply_text(
@@ -468,12 +468,12 @@ def stats(update, context):
             (
                 (
                     (
-                        "\n*Bot statistics*:\n"
+                        "\n**Bot statistics**:\n"
                         + "\n".join(mod.__stats__() for mod in STATS)
                     )
                     + f"\n\n✦ [Support](https://t.me/UchihaPolice_Support) | ✦ [Updates](https://t.me/UchihaPoliceUpdates)\n\n"
                 )
-                + "╘══「 by [Teamwarlords™](https://t.me/Emperors_Network) 」\n"
+                + "╘══「 by [Emperors Network](https://t.me/Emperors_Network) 」\n"
             ),
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
