@@ -14,7 +14,7 @@ _MGCLIENT: AgnosticClient = AsyncIOMotorClient(MONGODB_URI)
 
 # Function to check if the "Makima" database exists and create it if not
 async def check_and_create_database():
-    database_name = "Makima"
+    database_name = "Itachi"
     if database_name not in await _MGCLIENT.list_database_names():
         print(f"{database_name} Database Not Found :( => Creating New Database...")
         await _MGCLIENT[database_name].list_collection_names()
@@ -23,7 +23,7 @@ async def check_and_create_database():
 asyncio.get_event_loop().run_until_complete(check_and_create_database())
 
 # Define the "Makima" database
-_DATABASE: AgnosticDatabase = _MGCLIENT["Makima"]
+_DATABASE: AgnosticDatabase = _MGCLIENT["Itachi"]
 
 # Function to get a collection from the "Makima" database
 def get_collection(name: str) -> AgnosticCollection:
@@ -35,7 +35,7 @@ def close_db() -> None:
     _MGCLIENT.close()
 
 # Usage example:
-collection = get_collection("Makima")
+collection = get_collection("Itachi")
 # Perform database operations using the "collection" object
 
 # To close the MongoDB client when done:
