@@ -16,16 +16,16 @@ class Config(object):
 
     API_ID = 19099900  # integer value, dont use ""
     API_HASH = "2b445de78e5baf012a0793e60bd4fbf5"
-    TOKEN = "6406496777:AAE8Z99__GgfCCBY6ctQZ3tCR_4XT5krT30"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 6299128233  # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    TOKEN = "5520008350:AAHf8f4lJvsGs2ohgvXWyIQZqZB5kvDZRJY"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
+    OWNER_ID = 6265459491  # If you dont know, run the bot and do /id in your private chat with it, also an integer
     OWNER_USERNAME = "The_NanamiiKento"
-    SUPPORT_CHAT = 'BHatsGroup'  # Your own group for support, do not add the @
-    JOIN_LOGGER = -1002058050288  # Prints any new group the bot is added to, prints just the name and ID.
-    EVENT_LOGS = -1002058050288  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
-    ERROR_LOGS = -1002058050288  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
+    SUPPORT_CHAT = 'UchihaPolice_Support'  # Your own group for support, do not add the @
+    JOIN_LOGGER = -1001922732593  # Prints any new group the bot is added to, prints just the name and ID.
+    EVENT_LOGS = -1001922732593  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
+    ERROR_LOGS = -1001922732593  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
 
     # RECOMMENDED
-    DATABASE_URL = 'postgresql://dloqsnua:vFOEt4LOZ2WgcXwHOoHqu9xDqFJBf3bo@floppy.db.elephantsql.com/dloqsnua'  # needed for any database modules
+    DATABASE_URL = 'postgresql://bruggiuy:YQBqeOjfMDHca7RTD4Cu7u_df2TxzgSf@rain.db.elephantsql.com/bruggiuy' # needed for any database modules
     LOAD = []
     NO_LOAD = ['cleaner', 'connection', 'tts']
     WEBHOOK = False
@@ -79,8 +79,8 @@ class Config(object):
     TEMP_DOWNLOAD_DIRECTORY = './'
     ARQ_API_KEY = "PDQVNR-HVFFFP-ZGVHUS-ZHWPFH-ARQ"
     ARQ_API_URL = "https://arq.hamker.dev"
-    BOT_ID = 6406496777
-    BOT_USERNAME = "@MinatoNamikazee_Bot"
+    BOT_ID = 5520008350
+    BOT_USERNAME = "@Itachi_UchihaXBot"
     ANI_DB = None
     CHAT_DB = "itachi"
     ALLOW_CHATS = True
