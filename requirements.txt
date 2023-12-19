@@ -27,7 +27,7 @@ sqlalchemy==1.4.46
 telethon==1.24.0
 wikipedia==1.4.0
 zalgo-text==0.6
-fontTools==4.28.5
+fontTools==4.47.0
 pyrogram
 telegraph==2.2.0
 tgCrypto==1.2.5
