@@ -63,13 +63,13 @@ async def whois(client, message):
         return
     desc = await client.get_chat(get_user)
     desc = desc.description
-    user_photo = await user.get_profile_photos(limit=1)
+    user_photos = await client.get_user_profile_photos(user.id, limit=1)
     mutual_contacts = await client.get_users_mutual_contacts(user.id)
 
     profile_link = f"https://t.me/{user.username}" if user.username else f"tg://user?id={user.id}"
 
-    if user_photo:
-        photo = user_photo[0]
+    if user_photos and user_photos.total_count > 0:
+        photo = user_photos.photos[0][-1]
         if photo.file_type == "video":
             # Handle video profile photo
             await message.reply_video(video=photo.file_id, caption=infotext.format(
@@ -109,5 +109,3 @@ async def whois(client, message):
             mutual_contacts=len(mutual_contacts),
             profile_link=profile_link
         ), disable_web_page_preview=True)
-
-# ... (rest of the code, if any)
