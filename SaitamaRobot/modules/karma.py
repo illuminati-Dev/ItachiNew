@@ -1,6 +1,7 @@
 import re
+import asyncio
 from pyrogram import filters, Client
-from typing import Union, Dict
+from typing import Union
 from SaitamaRobot import pbot as app, BOT_ID
 from SaitamaRobot.utlis.permissions import adminsOnly
 from SaitamaRobot.modules.mongo.karma_mongo import (
@@ -15,7 +16,7 @@ from SaitamaRobot.modules.mongo.karma_mongo import (
 )
 from SaitamaRobot.utlis.filter_groups import karma_negative_group, karma_positive_group
 
-regex_upvote = r"^((?i)\+|\+\+|\+1|thx|tnx|ty|thank you|thanx|thanks|pro|cool|good|👍|nice|noice|piro|Oho|oho|OwO|UwU|Nais|)$"
+regex_upvote = r"^((?i)\+|\+\+|\+1|pro|cool|good|👍|nice|noice|piro|Oho|oho|OwO|UwU|Nais)$"
 regex_downvote = r"^(\-|\-\-|\-1|👎|noob|Noob|gross|fuck off|Bhakk|Abe Saale|Tauba|Tauba Tauba Tuba Saara Mood Kharab Kardiya)$"
 
 @app.on_message(
@@ -69,7 +70,7 @@ async def downvote(_, message):
 
     chat_id = message.chat.id
     user_id = message.reply_to_message.from_user.id
-    user_mention = message.reply_to_message.from_user.mention
+    user_mention = message.reply_to_message.from_user.ention
     current_karma = await get_karma(chat_id, await int_to_alpha(user_id))
     karma = current_karma - 1 if current_karma else -1
     await update_karma(chat_id, await int_to_alpha(user_id), karma)
@@ -77,7 +78,9 @@ async def downvote(_, message):
         f"Decremented Karma Of {user_mention} By 1 \nTotal Points: {karma}"
     )
 
-@app.on_message(filters.command("karma") & filters.group)
+@app.on_message(
+    filters.command("karma") & filters.group
+)
 async def karma(_, message):
     chat_id = message.chat.id
     if not message.reply_to_message:
@@ -141,11 +144,9 @@ async def captcha_state(_, message):
         await message.reply_text(usage)
 
 __help__ = """
-
 ❖ /karmas on/off :- Enables and disables karma in a chat **(Admin_only)**
 ❖ /karma  :- Lists Top 10 members of karma points in that specific chat.
 ❖ /karma (reply to a user_msg) :- Show karma points of that user.
-
 """
 
 __mod_name__ = "Karma 👏"
