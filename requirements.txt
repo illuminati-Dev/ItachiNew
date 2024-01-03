@@ -17,7 +17,7 @@ Pillow>=4.2.0
 pretty_errors==1.2.25
 Psutil==5.9.1
 psycopg2-binary
-pyrate-limiter==2.8.4
+pyrate-limiter==3.1.1
 python-telegram-bot==13.14
 regex==2022.7.25
 requests
