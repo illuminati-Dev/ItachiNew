@@ -50,7 +50,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-────「 [Itachi Uchiha](https://graph.org/file/863d9e30f84f9168f5c28.jpg) 」────
+────「 [Uᴄʜɪʜᴀ Mᴀᴅᴀʀᴀ ☻︎](https://graph.org/file/2b93bf9942e0674b416cd.jpg) 」────
 Hola! {},
 My Name Is {}◎! ㅤ
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
@@ -63,7 +63,7 @@ buttons = [
     [
         InlineKeyboardButton(
             text="➕️ 𝘼𝙙𝙙 𝙄𝙩𝙖𝙘𝙝𝙞 𝙏𝙤 𝙈𝙖𝙣𝙖𝙜𝙚 𝙔𝙤𝙪𝙧 𝙂𝙧𝙤𝙪𝙥 ➕️",
-            url="t.me/Itachi_UchihaXBot?startgroup=true",
+            url="t.me/MadaraUchiha_xBot?startgroup=true",
         ),
     ],
     [
@@ -89,7 +89,7 @@ buttons = [
 
 HELP_STRINGS = """
 ʜᴇʏ ᴛʜᴇʀᴇ! ᴍʏ ɴᴀᴍᴇ ɪs *{}*.
-ɪ'ᴍ ᴀ ᴘᴀʀᴛ ᴏғ [TheKaizers](https://t.me/UchihaPolice_Support)
+ɪ'ᴍ ᴀ ᴘᴀʀᴛ ᴏғ [Uchiha Police](https://t.me/UchihaPolice_Support)
 ʜᴀᴠᴇ ᴀ ʟᴏᴏᴋ ᴀᴛ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ғᴏʀ ᴀɴ ɪᴅᴇᴀ ᴏғ sᴏᴍᴇ ᴏғ ᴛʜᴇ ᴛʜɪɴɢs ɪ ᴄᴀɴ ʜᴇʟᴘ ʏᴏᴜ ᴡɪᴛʜ.
 
 *ᴍᴀɪɴ* ᴄᴏᴍᴍᴀɴᴅs ᴀᴠᴀɪʟᴀʙʟᴇ: 
