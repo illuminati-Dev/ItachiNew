@@ -16,16 +16,16 @@ class Config(object):
 
     API_ID = 19099900  # integer value, dont use ""
     API_HASH = "2b445de78e5baf012a0793e60bd4fbf5"
-    TOKEN = "5520008350:AAHf8f4lJvsGs2ohgvXWyIQZqZB5kvDZRJY"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
-    OWNER_ID = 6265459491  # If you dont know, run the bot and do /id in your private chat with it, also an integer
-    OWNER_USERNAME = "The_NanamiiKento"
+    TOKEN = "6330964987:AAEwTEcJ81bg4zu2ssJJE0Ujhy4DQy9HG1o"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
+    OWNER_ID = 6299128233  # If you dont know, run the bot and do /id in your private chat with it, also an integer
+    OWNER_USERNAME = "GenVNano"
     SUPPORT_CHAT = 'UchihaPolice_Support'  # Your own group for support, do not add the @
     JOIN_LOGGER = -1001922732593  # Prints any new group the bot is added to, prints just the name and ID.
     EVENT_LOGS = -1001922732593  # Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
     ERROR_LOGS = -1001922732593  # gives alerts about errors u can kepp same as support chat or even OWNER_ID(bot will give errors personally).
 
     # RECOMMENDED
-    DATABASE_URL = 'postgresql://bruggiuy:YQBqeOjfMDHca7RTD4Cu7u_df2TxzgSf@rain.db.elephantsql.com/bruggiuy' # needed for any database modules
+    DATABASE_URL = 'postgresql://dloqsnua:vFOEt4LOZ2WgcXwHOoHqu9xDqFJBf3bo@floppy.db.elephantsql.com/dloqsnua' # needed for any database modules
     LOAD = []
     NO_LOAD = ['cleaner', 'connection', 'tts']
     WEBHOOK = False
@@ -42,9 +42,7 @@ class Config(object):
     # List of id's - (not usernames) for developers who will have the same perms as the owner
     DEV_USERS = [
         6299128233,
-        5751548638,
-        5743243857,
-        5821581983,
+        6265459491,
 
     ]
     # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
@@ -79,10 +77,10 @@ class Config(object):
     TEMP_DOWNLOAD_DIRECTORY = './'
     ARQ_API_KEY = "PDQVNR-HVFFFP-ZGVHUS-ZHWPFH-ARQ"
     ARQ_API_URL = "https://arq.hamker.dev"
-    BOT_ID = 5520008350
-    BOT_USERNAME = "@Itachi_UchihaXBot"
+    BOT_ID = 6330964987
+    BOT_USERNAME = "@MadaraUchiha_xBot"
     ANI_DB = None
-    CHAT_DB = "itachi"
+    CHAT_DB = "madara"
     ALLOW_CHATS = True
     DOWN_PATH = "anibot/downloads/"
     KUKI_TOKEN = "ce95970e-8ff5-4ddf-9710-e5fbd54a78f5"
