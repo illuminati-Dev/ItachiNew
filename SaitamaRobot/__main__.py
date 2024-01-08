@@ -599,7 +599,7 @@ def main():
     if TEST is not None:
         try:
             dispatcher.bot.sendMessage(TEST,
-                                       "[Any technique is worthless before my eyes!](https://telegra.ph/file/989f55a82dc6de16fa01b.mp4)",
+                                       "[Wake Up To Reality! Nothing ever goes as planned in this world. The longer you live, the more you realize that only pain, suffering, and futility exist in this reality!](https://graph.org/file/c7d716a48e9d18bcba80e.mp4)",
                                        parse_mode=ParseMode.MARKDOWN)
         except Unauthorized:
             LOGGER.warning(
