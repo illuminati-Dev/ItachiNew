@@ -459,7 +459,7 @@ def stats(update, context):
             output + status + "\n*╒═══「 System statistics 」*\n"
             + "\n".join([mod.__stats__() for mod in STATS])
             + f"\n\n[✦ Support](https://t.me/UchihaPolice_Support) | [✦ Updates](https://t.me/UchihaPoliceUpdates)\n\n"
-            + "╘══「 by [Teamwarlords™](https://t.me/Emperors_Network) 」\n",
+            + "╘══「 by [Emperors Network](https://t.me/Emperors_Network) 」\n",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
